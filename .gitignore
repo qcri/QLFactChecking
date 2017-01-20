@@ -1,0 +1,3 @@
+data/predictions/*
+data/results/*
+*.pyc
