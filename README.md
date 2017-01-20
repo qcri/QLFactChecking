@@ -1,6 +1,6 @@
 # QLFactChecking
 
-This project contains scripts for preparation of Fack Ching in the Qatar Living community forum.
+This project contains scripts for preparation of Fact Checking in the Qatar Living community forum.
 
 ## Setup
 
