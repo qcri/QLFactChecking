@@ -33,11 +33,17 @@ def run(run_id, feat_index=''):
     ensure_required_directories_exist()
    
     splits = 5
-    set_parts = comment_utils.split_set_in_parts(DATA_PATH, splits)
+    set_parts = comment_utils.split_set_in_consecutive_parts(DATA_PATH, splits)
 
     full_set = []
     for i in range(0,splits):
         full_set.extend(set_parts[i])
+
+    if not os.path.exists(RESULTS_FILE):
+        # If the results file does not exist - calcualte the baselines
+        write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'Predictions', '', ''], RESULTS_FILE)
+        calculate_baseline(full_set, 0, 'all-negative', RESULTS_FILE)
+        calculate_baseline(full_set, 1, 'all-positive', RESULTS_FILE)
 
     best_params, scoring = run_experiment(full_set, full_set, run_id, feat_index, True)
 
@@ -50,6 +56,17 @@ def run(run_id, feat_index=''):
         params, scoring = run_experiment(train_set, test_set, run_id, feat_index, False, best_params)
 
     evaluate_test_sets(RESULTS_FILE, run_id, params, scoring)
+
+
+def calculate_baseline(data_set, baseline_label, baseline_name, results_file):
+    print('calvlating baseline:', baseline_name)
+    baseline_prediction_file = PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=baseline_name, time=timestamp)
+    for comment in data_set:
+        write_to_csv_file([comment.comment_id, baseline_label], baseline_prediction_file)
+    baseline_eval = evaluate(DATA_PATH, baseline_prediction_file, results_file, baseline_name, SET_NAME)
+    result_line = [baseline_name, timestamp, 'n/a', 'n/a']
+    result_line.extend(baseline_eval)
+    write_to_csv_file(result_line, results_file)
 
 def ensure_required_directories_exist():
     ensure_directory_exists('../../../data/predictions')
@@ -148,6 +165,7 @@ def evaluate(gold_labels_file, prediction_file, results_file, run_id, set_name):
     return [set_name, accuracy, precision, recall, f1, confusion_matrix, confusion_matrix2, confusion_matrix3]
 
 def read_features_from_index(data, set_name, feat_index):
+    set_name = 'dev+test'
     print('---Reading features from index for ' + set_name, feat_index) 
     X = []
     y = []
