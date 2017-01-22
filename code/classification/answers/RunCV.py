@@ -38,17 +38,19 @@ def run(run_id, feat_index=''):
     for i in range(0,splits):
         full_set.extend(set_parts[i])
 
+    best_params, scoring = run_experiment(full_set, full_set, run_id, feat_index, True)
+
     for i in range(0,splits):
         print('running experiments for split', i)
         train_set = list(full_set)
         test_set = set_parts[i]
         for c in test_set:
             train_set.remove(c)
-        params = run_experiment(train_set, test_set, run_id, feat_index)
+        params, scoring = run_experiment(train_set, test_set, run_id, feat_index, False, best_params)
 
-    evaluate_test_sets(RESULTS_FILE, run_id, params)
+    evaluate_test_sets(RESULTS_FILE, run_id, params, scoring)
 
-def run_experiment(train_data, dev_data, run_id, feat_index=''):
+def run_experiment(train_data, dev_data, run_id, feat_index='', full_set=False, params=None):
     # Read the features
     train_features, train_labels = read_features(train_data, SET_NAME, feat_index)
     dev_features, dev_labels = read_features(dev_data, SET_NAME, feat_index)
@@ -58,43 +60,45 @@ def run_experiment(train_data, dev_data, run_id, feat_index=''):
     train_features = min_max_scaler.fit_transform(train_features)
     dev_features = min_max_scaler.transform(dev_features)
 
-    # Disable building a model with scikit learn, we will use other tools instead
-    # Build model from the train data
-    model, best_params = build_model(train_features, train_labels)
+    # If the full set is passed, we want to just return the best params.
+    # If a subset is passed, the passed params are used
 
+    if full_set:
+        model, best_params, scoring = build_model(train_features, train_labels)
+    else:
+        model, best_params, scoring = build_model(train_features, train_labels, params)
+        # Predict the dev and train data
+        dev_predicted = model.predict(dev_features)
 
-    # Predict the dev and train data
-    dev_predicted = model.predict(dev_features)
+        print(dev_predicted)
 
-    print(dev_predicted)
+        for (i,comment) in enumerate(dev_data):
+            comment.predicted_label = dev_predicted[i]
 
-    for (i,comment) in enumerate(dev_data):
-        comment.predicted_label = dev_predicted[i]
-
-    # Write the predicted labels to file
-    write_predictions_to_file(dev_data, predictions_path(run_id))
+        # Write the predicted labels to file
+        write_predictions_to_file(dev_data, predictions_path(run_id))
 
     # evaluate and save the result
-    return best_params
+    return best_params, scoring
 
 def write_predictions_to_file(data, file):
     for comment in data:
         write_to_csv_file([comment.comment_id, comment.predicted_label], file)
 
-def evaluate_test_sets(results_file, run_id, best_params):
+def evaluate_test_sets(results_file, run_id, best_params, scoring):
     # write header:
     if not os.path.exists(results_file):
-        write_to_csv_file(['RUN-ID', 'Time', 'Params\tOptimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'Predictions', '', ''], results_file)
+        write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'Predictions', '', ''], results_file)
 
-    result_line = [run_id, timestamp, best_params]
+    result_line = [run_id, timestamp, best_params, scoring]
 
-    dev_eval = evaluate(DATA_PATH, predictions_path(run_id), results_file, run_id, SET_NAME, best_params)
+    dev_eval = evaluate(DATA_PATH, predictions_path(run_id), results_file, run_id, SET_NAME)
 
     result_line.extend(dev_eval)
 
     write_to_csv_file(result_line, results_file)
 
-def evaluate(gold_labels_file, prediction_file, results_file, run_id, set_name, best_params):
+def evaluate(gold_labels_file, prediction_file, results_file, run_id, set_name):
     gold_labels = comment_utils.read_comment_labels_from_xml(gold_labels_file)
     predicted_labels = comment_utils.read_comment_labels_from_tsv(prediction_file)
 
@@ -172,27 +176,27 @@ def read_features(data, set_name, feat_index):
     return X, y
 
     
-def build_model(X, y, scoring='accuracy', params = None):
+def build_model(X, y, params = None, scoring='accuracy'):
     
-    print('Building model...')
+    print('Building model...', params)
     # clf = LinearSVC(C=4)
     # clf.fit(X, y)
 
     # If params are given, use them for the classifier
     # Otherwise - perform grid search to find the best params
-    # if params:
-    #     clf = SVC(params)
-    # else:
-    #     param_grid = [
-    #         {'C': [1, 2, 4, 8], 'kernel': ['linear']},
-    #         {'C': [0.5, 1, 2, 4, 8], 'gamma': [0.3, 0.2, 0.1], 'kernel': ['rbf']},
-    #     ]
-    #     svr = SVC()
-    #     clf = GridSearchCV(svr, param_grid, scoring=scoring)    
+    if params:
+        print('Training with predefined params...')
+        clf = SVC(**params)
+    else:
+        print('Perform gried search for best params...')
+        param_grid = [
+            {'C': [1, 2, 4, 8], 'kernel': ['linear']},
+            {'C': [0.5, 1, 2, 4, 8], 'gamma': [0.3, 0.2, 0.1], 'kernel': ['rbf']},
+        ]
+        svr = SVC()
+        clf = GridSearchCV(svr, param_grid, scoring=scoring)    
 
-    
-
-    clf = SVC(C=2, gamma=0.2)
+    #clf = SVC(C=2, gamma=0.2)
     clf.fit(X, y)
 
     if isinstance(clf, GridSearchCV):
@@ -200,9 +204,9 @@ def build_model(X, y, scoring='accuracy', params = None):
         print("best score: ", clf.best_score_)
         print("best estimator: ",  clf.best_estimator_)
 
-        return clf, str(clf.best_params_) + '\t' + scoring
+        return clf, clf.best_params_, scoring
     else:
-        return clf, str(clf.get_params(False)) + '\t' + scoring
+        return clf, clf.get_params(False), scoring
 
 def write_output(pairs, set_name, run_id):
     # output for svmrank
