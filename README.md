@@ -11,7 +11,11 @@ The set name can be changed in file *RunCV.py -> SET_NAME*.
 
 ## Run
 
-In order to run the project, execute the file *RunMultiple.py* in directory *code/classification/answers*.
+The project was built with Python 3.5. You will need Python 3 to run it.
+
+In order to run the classificaiton, execute the file *RunMultiple.py* in directory *code/classification/answers*.
+
+The results will be saved in directory: *data/results*. The predictions for each examples will be saved in directory *data/predictions*.
 
 ## Features
   **TODO**
