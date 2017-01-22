@@ -187,5 +187,5 @@ def split_set_in_parts(xml_file, parts_size):
     return parts
 
 
-xml = '../../../data/input/input-dev+test.xml'
-split_set_in_consecutive_parts(xml, 5)
+# xml = '../../../data/input/input-dev+test.xml'
+# split_set_in_consecutive_parts(xml, 5)
