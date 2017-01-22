@@ -30,6 +30,7 @@ def predictions_path(run_id):
 
 def run(run_id, feat_index=''):
     print('--RUN_ID: ', run_id)
+    ensure_required_directories_exist()
    
     splits = 5
     set_parts = comment_utils.split_set_in_parts(DATA_PATH, splits)
@@ -49,6 +50,14 @@ def run(run_id, feat_index=''):
         params, scoring = run_experiment(train_set, test_set, run_id, feat_index, False, best_params)
 
     evaluate_test_sets(RESULTS_FILE, run_id, params, scoring)
+
+def ensure_required_directories_exist():
+    ensure_directory_exists('../../../data/predictions')
+    ensure_directory_exists('../../../data/results')
+
+def ensure_directory_exists(f):
+    if not os.path.exists(f):
+        os.makedirs(f)   
 
 def run_experiment(train_data, dev_data, run_id, feat_index='', full_set=False, params=None):
     # Read the features
@@ -188,10 +197,10 @@ def build_model(X, y, params = None, scoring='accuracy'):
         print('Training with predefined params...')
         clf = SVC(**params)
     else:
-        print('Perform gried search for best params...')
+        print('Perform grid search for finding the best params...')
         param_grid = [
-            {'C': [1, 2, 4, 8], 'kernel': ['linear']},
-            {'C': [0.5, 1, 2, 4, 8], 'gamma': [0.3, 0.2, 0.1], 'kernel': ['rbf']},
+            {'C': [0.025, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 100, 128, 256, 500, 1000], 'kernel': ['linear']},
+            {'C': [0.025, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 100, 128, 256, 500, 1000], 'gamma': [2, 1, 0.5, 0.3, 0.2, 0.1, 0.01, 0.001, 0.0001], 'kernel': ['rbf']},
         ]
         svr = SVC()
         clf = GridSearchCV(svr, param_grid, scoring=scoring)    
