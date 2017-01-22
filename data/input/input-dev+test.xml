@@ -1,13 +1,5 @@
 <xml version="1.0">
 
-	<Thread THREAD_SEQUENCE="Q272_R51" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Opportunities" RELQ_DATE="2010-05-21 20:20:40" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q272_R51" RELQ_USERID="U5206" RELQ_USERNAME="edfeeoc">
-			<RelQSubject>Qatar petroleum technical site interview?</RelQSubject>
-			<RelQBody>Elsalam Alikom every one Any one know about qatar petroleum technical site interview process ( 2days visit) as i recive the visit visa and they ask me for the earlist date to attand and also how much does it take to decide the day of interview ?? Many thanks</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
 	<Thread THREAD_SEQUENCE="Q273_R39" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Moving to Qatar" RELQ_DATE="2009-03-17 07:33:13" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q273_R39" RELQ_USERID="U5214" RELQ_USERNAME="recent_graduate">
 			<RelQSubject>Vaccinations needed before i come to Doha?</RelQSubject>
@@ -53,14 +45,6 @@
 			<RelCText>Yes you can bring it but be careful this kind of dog is very very very dangerous. Because I have one that my friend brought it to my last year from Kuwait. You can talk to Doha Airport to be sure about that.</RelCText>
 		</RelComment>
 	</Thread>
-
-	<Thread THREAD_SEQUENCE="Q274_R41" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Welcome to Qatar" RELQ_DATE="2008-11-04 14:33:46" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q274_R41" RELQ_USERID="U5227" RELQ_USERNAME="saudisandie">
-			<RelQSubject>How hot is Doha at the moment?</RelQSubject>
-			<RelQBody>What is the weather temperature like in Doha at the moment? I have been reading the Forum Topics about the need for heaters during the winter months. Am quite worried.</RelQBody>
-		</RelQuestion>
-
-		</Thread>
 
 	<Thread THREAD_SEQUENCE="Q274_R68" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Family Life in Qatar" RELQ_DATE="2008-09-08 08:07:14" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q274_R68" RELQ_USERID="U5232" RELQ_USERNAME="john galt">
@@ -306,14 +290,6 @@
 
 		</Thread>
 
-	<Thread THREAD_SEQUENCE="Q289_R31" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2009-03-20 16:38:44" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q289_R31" RELQ_USERID="U5355" RELQ_USERNAME="Dano">
-			<RelQSubject>Irish Harp</RelQSubject>
-			<RelQBody>does anyone know what time the Harp opens on a friday? thanks</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
 	<Thread THREAD_SEQUENCE="Q289_R35" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Socialising" RELQ_DATE="2007-05-20 14:21:54" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q289_R35" RELQ_USERID="U5357" RELQ_USERNAME="babnya">
 			<RelQSubject>Discos in Qatar</RelQSubject>
@@ -347,14 +323,6 @@
 		<RelComment RELC_DATE="2012-06-19 13:47:57" RELC_FACT_LABEL="True" RELC_ID="Q291_R34_C5" RELC_RELEVANCE2RELQ="Good" RELC_USERID="U1636" RELC_USERNAME="peter_12">
 			<RelCText>I registered my child and I love so much this nursery; i'm very happy to find a place there ! I have the phone of Perles d'avenir Nursery is 44817611.</RelCText>
 		</RelComment>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q298_R54" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2009-08-28 09:58:14" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q298_R54" RELQ_USERID="U5395" RELQ_USERNAME="betaneko">
-			<RelQSubject>pork for sale in Doha?</RelQSubject>
-			<RelQBody>Heard a rumor that out near the Liquor store a building is going to be built where they will sell Pork products; by licence; just like the liquor store. Anyone else heard this rumor?</RelQBody>
-		</RelQuestion>
 
 		</Thread>
 
@@ -478,22 +446,6 @@
 
 		</Thread>
 
-	<Thread THREAD_SEQUENCE="Q303_R39" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Opportunities" RELQ_DATE="2008-10-21 17:50:04" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q303_R39" RELQ_USERID="U5433" RELQ_USERNAME="david banner">
-			<RelQSubject>Tasweeq</RelQSubject>
-			<RelQBody>Hello Fellow QL'ers; does anyone have a number for a company called tasweeq? aand yes; i did try 180; but as we all know.....</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q303_R44" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Pets and Animals" RELQ_DATE="2009-04-09 20:15:26" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q303_R44" RELQ_USERID="U5435" RELQ_USERNAME="miloman15">
-			<RelQSubject>are there any dangerous wild animals in Qatar?</RelQSubject>
-			<RelQBody />
-		</RelQuestion>
-
-		</Thread>
-
 	<Thread THREAD_SEQUENCE="Q306_R20" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Advice and Help" RELQ_DATE="2011-05-12 22:12:41" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q306_R20" RELQ_USERID="U5449" RELQ_USERNAME="m0kz12">
 			<RelQSubject>Experience necessary for NHA License??</RelQSubject>
@@ -583,14 +535,6 @@
 		<RelComment RELC_DATE="2015-01-11 13:52:14" RELC_FACT_LABEL="False" RELC_ID="Q312_R42_C2" RELC_RELEVANCE2RELQ="Good" RELC_USERID="U5484" RELC_USERNAME="Fasih">
 			<RelCText>I think they stop for Visit visa to travel for Umrah only Resident people can go any time.</RelCText>
 		</RelComment>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q315_R21" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2008-01-28 08:13:44" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q315_R21" RELQ_USERID="U3044" RELQ_USERNAME="nouf84">
-			<RelQSubject>"help me find this song</RelQSubject>
-			<RelQBody>hola people cud u help me out please been hearing this song for ages on the radio and it's driving me crazy coz i dont know who sings it... thought it was kylie but when i googled it i got nothing... and they never say who it is on the radio.. it goes something like.. ""only in my dreams you're mine... i meet you every night inside... and everytime i wake i cry... gotta make tonight the night.."" can anyone help me out?? cheerios"</RelQBody>
-		</RelQuestion>
 
 		</Thread>
 
@@ -756,14 +700,6 @@
 		</RelComment>
 	</Thread>
 
-	<Thread THREAD_SEQUENCE="Q330_R96" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Moving to Qatar" RELQ_DATE="2011-02-17 14:20:26" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q330_R96" RELQ_USERID="U3" RELQ_USERNAME="anonymous">
-			<RelQSubject>Moving house - how long will Qtel take?</RelQSubject>
-			<RelQBody>I am moving to a new villa this weekend. Does anyone now how long Qtel takes to move internet and landline; how long will I be without a connection? I haven't spoken to them yet; just want to get the general idea...</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
 	<Thread THREAD_SEQUENCE="Q332_R2" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Doha Shopping" RELQ_DATE="2008-04-08 12:03:06" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q332_R2" RELQ_USERID="U5645" RELQ_USERNAME="DHW">
 			<RelQSubject>Where to buy Sarees in Doha</RelQSubject>
@@ -810,14 +746,6 @@
 			<RelCText>White Saree; ya ya the galz really look very beautiful in it. But when it rains and they wearing white saree looks Awesome.</RelCText>
 		</RelComment>
 	</Thread>
-
-	<Thread THREAD_SEQUENCE="Q332_R31" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2010-10-08 17:15:38" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q332_R31" RELQ_USERID="U3" RELQ_USERNAME="anonymous">
-			<RelQSubject>Al-Deera is still there in souq area?</RelQSubject>
-			<RelQBody>Please let me know if the souq area is still there or they have demolished.I want to go to Al-Deera for some work.Somebody told me that it is demolished already.Thanks</RelQBody>
-		</RelQuestion>
-
-		</Thread>
 
 	<Thread THREAD_SEQUENCE="Q334_R1" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Visas and Permits" RELQ_DATE="2012-11-08 18:17:05" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q334_R1" RELQ_USERID="U5664" RELQ_USERNAME="nolimit888">
@@ -895,14 +823,6 @@
 		<RelComment RELC_DATE="2010-07-11 13:56:56" RELC_FACT_LABEL="True" RELC_ID="Q338_R2_C6" RELC_RELEVANCE2RELQ="Good" RELC_USERID="U3" RELC_USERNAME="anonymous">
 			<RelCText>As you've said this is a muslim country; no chance for such things like that..HARAMMMMMMMMMM!</RelCText>
 		</RelComment>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q338_R27" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Doha Shopping" RELQ_DATE="2009-05-22 13:36:20" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q338_R27" RELQ_USERID="U5700" RELQ_USERNAME="littlejimmy">
-			<RelQSubject>Toys R Us on C-ring road</RelQSubject>
-			<RelQBody>Does anyone know what time it opens on a Friday? Thanks in advance.</RelQBody>
-		</RelQuestion>
 
 		</Thread>
 
@@ -1016,14 +936,6 @@
 		</RelComment>
 	</Thread>
 
-	<Thread THREAD_SEQUENCE="Q341_R75" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Welcome to Qatar" RELQ_DATE="2008-10-25 11:02:56" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q341_R75" RELQ_USERID="U3" RELQ_USERNAME="anonymous">
-			<RelQSubject>where i can get a funny ''baby on board'' car's stickers???</RelQSubject>
-			<RelQBody />
-		</RelQuestion>
-
-		</Thread>
-
 	<Thread THREAD_SEQUENCE="Q344_R1" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2012-10-22 22:42:41" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q344_R1" RELQ_USERID="U446" RELQ_USERNAME="Palancole">
 			<RelQSubject>Guys help me if you can</RelQSubject>
@@ -1092,30 +1004,6 @@
 
 		</Thread>
 
-	<Thread THREAD_SEQUENCE="Q349_R25" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Salary and Allowances" RELQ_DATE="2012-10-09 18:05:51" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q349_R25" RELQ_USERID="U5812" RELQ_USERNAME="leif_francie23">
-			<RelQSubject>Qatar Airways Salary</RelQSubject>
-			<RelQBody>Hi guys! Please help me. What is the current salary range of Admin Assistant in Qatar Airways? Would really appreciate if you could help me. Thank you very much! Francie :)</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q349_R30" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Salary and Allowances" RELQ_DATE="2008-03-09 20:19:46" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q349_R30" RELQ_USERID="U5815" RELQ_USERNAME="fqis">
-			<RelQSubject>LICENSED AIRCRAFT ENGINEER</RelQSubject>
-			<RelQBody>Hi i ve been offered a job as a licensed aircraft engineer in qatar airways ; the salary is around 20000QAR including everything ; is there any additionnal allowance regarding license and type ratings? because the salary doesnt include any related allowance ; and what about the toolbox is it provided by the company or i have to bring mine . thank you for replying</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q350_R15" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2008-02-20 20:25:25" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q350_R15" RELQ_USERID="U701" RELQ_USERNAME="uncleshark">
-			<RelQSubject>Transporting Beer</RelQSubject>
-			<RelQBody>Was driving back from QDC today; in a bit of a hurry so I wasn't thinking when I left the 24 of beer on the passenger seat. Some Qatari drove past me in his Land Cruiser and took a pic with his phone. Could this be a problem?</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
 	<Thread THREAD_SEQUENCE="Q351_R5" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Family Life in Qatar" RELQ_DATE="2012-10-02 11:47:20" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q351_R5" RELQ_USERID="U850" RELQ_USERNAME="lost-in-qatar">
 			<RelQSubject>Tipping?</RelQSubject>
@@ -1157,22 +1045,6 @@
 		<RelComment RELC_DATE="2008-07-08 12:25:28" RELC_FACT_LABEL="True" RELC_ID="Q351_R27_C9" RELC_RELEVANCE2RELQ="Good" RELC_USERID="U454" RELC_USERNAME="wizz14">
 			<RelCText>suit + tie even 45 degree temp.</RelCText>
 		</RelComment>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q353_R1" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2012-09-27 17:18:35" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q353_R1" RELQ_USERID="U3" RELQ_USERNAME="anonymous">
-			<RelQSubject>Bought and Iphone 5....HELP</RelQSubject>
-			<RelQBody>Hi All; I bought an iphone5 from the uk and had it shipped out here i received it today. I was told it was unlocked to any network and would accept any simcard but that was incorrect as it is locked to 1 carrier any ideas on how to get it unlocked or a way round it ?</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q353_R25" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2010-03-03 19:57:32" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q353_R25" RELQ_USERID="U1918" RELQ_USERNAME="fluffy123">
-			<RelQSubject>How much the iPad in Qatar will cost?</RelQSubject>
-			<RelQBody>does anyone know?</RelQBody>
-		</RelQuestion>
 
 		</Thread>
 
@@ -1373,22 +1245,6 @@
 
 		</Thread>
 
-	<Thread THREAD_SEQUENCE="Q365_R52" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Visas and Permits" RELQ_DATE="2011-01-07 03:17:54" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q365_R52" RELQ_USERID="U3" RELQ_USERNAME="anonymous">
-			<RelQSubject>2 monthes for work permit !!!!</RelQSubject>
-			<RelQBody>Hi all; I hope some one to help me; I have an offer letter from a company in Qatar and by today it has been 2 monthes since I sent them all required papers for the Visa and still they said it's not ready yet. (I'm Syrian) my question how long does it usually take and what is the maximum duration ? Thanks in advance &#1575;&#1585;&#1580;&#1608;&#1603;&#1605; &#1587;&#1575;&#1593;&#1583;&#1608;&#1606;&#1610;</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q368_R28" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2008-03-27 09:38:11" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q368_R28" RELQ_USERID="U2708" RELQ_USERNAME="jinkz">
-			<RelQSubject>Bahrain Shop ... Please PM me; the topic is a bit sensitive</RelQSubject>
-			<RelQBody>Please; anyone?? Do they have Spinney's or Choitrams there?</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
 	<Thread THREAD_SEQUENCE="Q372_R1" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Family Life in Qatar" RELQ_DATE="2012-08-25 13:17:23" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q372_R1" RELQ_USERID="U5954" RELQ_USERNAME="shamim.doha">
 			<RelQSubject>Where is Delhi sweets.</RelQSubject>
@@ -1518,22 +1374,6 @@
 
 		</Thread>
 
-	<Thread THREAD_SEQUENCE="Q380_R45" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2013-04-03 13:54:52" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q380_R45" RELQ_USERID="U6041" RELQ_USERNAME="hapon24">
-			<RelQSubject>Villagio</RelQSubject>
-			<RelQBody>Villagio is on fire agagin today???</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q381_R19" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Doha Shopping" RELQ_DATE="2006-05-03 21:13:41" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q381_R19" RELQ_USERID="U1872" RELQ_USERNAME="shay">
-			<RelQSubject>One for the Girls - Hairdressing</RelQSubject>
-			<RelQBody>Hair Salon - Has anyone seen a Loreal Salon in Doha? I would assume it may be in one of the hotels/resorts. The salon would have Loreal branding on the window..... Thanks S</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
 	<Thread THREAD_SEQUENCE="Q382_R3" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Investment and Finance" RELQ_DATE="2012-07-19 16:44:57" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q382_R3" RELQ_USERID="U6049" RELQ_USERNAME="sinunandu">
 			<RelQSubject>Personal Loans from Islamic banks</RelQSubject>
@@ -1580,14 +1420,6 @@
 			<RelCText>YES DEAR QATAR ISLAMIC BANK.GIVING VERY LOW INTEREST LOAN....BUT MOSTLY GIVING WORKING IN GOVERNMENT DEPARTMENT..BUT YOU CAN TRY AND SEE...TAKE CARE</RelCText>
 		</RelComment>
 	</Thread>
-
-	<Thread THREAD_SEQUENCE="Q383_R34" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Advice and Help" RELQ_DATE="2009-09-19 21:34:41" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q383_R34" RELQ_USERID="U6060" RELQ_USERNAME="thanuja">
-			<RelQSubject>Ramadan</RelQSubject>
-			<RelQBody>HI ! Just wanted to know is it confirm that it's Ramadan tomorrow ?</RelQBody>
-		</RelQuestion>
-
-		</Thread>
 
 	<Thread THREAD_SEQUENCE="Q383_R96" updated="yes">
 		<RelQuestion RELQ_CATEGORY="Qatari Culture" RELQ_DATE="2009-08-22 18:42:28" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q383_R96" RELQ_USERID="U6061" RELQ_USERNAME="brycebridges">
@@ -1711,28 +1543,4 @@
 
 		</Thread>
 
-	<Thread THREAD_SEQUENCE="Q386_R32" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Computers and Internet" RELQ_DATE="2008-09-22 14:21:32" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q386_R32" RELQ_USERID="U6086" RELQ_USERNAME="virgo825">
-			<RelQSubject>Between Carrefour and Jarir; which of the two has the lower price for laptops?</RelQSubject>
-			<RelQBody />
-		</RelQuestion>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q387_R24" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Doha Shopping" RELQ_DATE="2011-04-15 10:53:08" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q387_R24" RELQ_USERID="U6091" RELQ_USERNAME="Friendly Couple">
-			<RelQSubject>Where to buy Asian sizes of ladies Clothes?</RelQSubject>
-			<RelQBody>We are new Philipino couples comer in Qatar. We have attended many shops in Doha; but We have difficulties in searching the proper size of Asian ladies Clothes; Shoes &amp; Sandals. Anyone knows? please inform us.. Thank you Friendly Couple.</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
-	<Thread THREAD_SEQUENCE="Q387_R44" updated="yes">
-		<RelQuestion RELQ_CATEGORY="Qatar Living Lounge" RELQ_DATE="2013-04-18 06:59:51" RELQ_FACT_LABEL="Single Question - Factual" RELQ_ID="Q387_R44" RELQ_USERID="U135" RELQ_USERNAME="timebandit">
-			<RelQSubject>What day of the week is it?</RelQSubject>
-			<RelQBody>I know I can find this information elsewhere; I just thought I would ask on here first just incase someone can save me the trouble of looking it up myself.</RelQBody>
-		</RelQuestion>
-
-		</Thread>
-
-</xml>
+	</xml>
