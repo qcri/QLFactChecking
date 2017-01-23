@@ -24,14 +24,17 @@ DATA_PATH = "../../../data/input/input-"+SET_NAME+".xml"
 PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-$time.tsv")
 RESULTS_FILE = "../../../data/results/results-answers-cross-validation-"+SET_NAME+".tsv"
 CROSS_VALIDATION = True
-SPLIT_SETS_SIZE = 0 # 0 or lower will perform leave-1-out
+# <0: leave-1-comment-out
+# 0: leave-1-question-out
+# >0: splits size
+SPLIT_SETS_SIZE = 0
 
 def predictions_path(run_id):
     return PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=run_id, time=timestamp)
 
 
 def run(run_id, feat_index=''):
-    if SPLIT_SETS_SIZE > 0:
+    if SPLIT_SETS_SIZE >= 0:
         run_split_sets(run_id, SPLIT_SETS_SIZE, feat_index)
     else:
         run_leave_one_out(run_id, feat_index)
@@ -66,11 +69,16 @@ def run_leave_one_out(run_id, feat_index=''):
 def run_split_sets(run_id, splits, feat_index=''):
     print('--RUN_ID: ', run_id)
     ensure_required_directories_exist()
-   
-    set_parts = comment_utils.split_set_in_consecutive_parts(DATA_PATH, splits)
+
+    set_parts = []
+
+    if splits == 0:
+        set_parts = comment_utils.split_set_in_parts_leave_1_question_out(DATA_PATH)
+    else:
+        set_parts = comment_utils.split_set_in_consecutive_parts(DATA_PATH, splits)
 
     full_set = []
-    for i in range(0,splits):
+    for i in range(0,len(set_parts)):
         full_set.extend(set_parts[i])
 
     if not os.path.exists(RESULTS_FILE):
@@ -81,7 +89,7 @@ def run_split_sets(run_id, splits, feat_index=''):
 
     best_params, scoring = run_experiment(full_set, full_set, run_id, feat_index, True)
 
-    for i in range(0,splits):
+    for i in range(0,len(set_parts)):
         print('running experiments for split', i)
         train_set = list(full_set)
         test_set = set_parts[i]
@@ -93,9 +101,9 @@ def run_split_sets(run_id, splits, feat_index=''):
 
 
 def calculate_baseline(data_set, baseline_label, baseline_name, results_file):
-    print('calvlating baseline:', baseline_name)
+    print('calculating baseline:', baseline_name)
     baseline_prediction_file = PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=baseline_name, time=timestamp)
-    for comment in data_set:
+    for comment in data_set:        
         write_to_csv_file([comment.comment_id, baseline_label], baseline_prediction_file)
     baseline_eval = evaluate(DATA_PATH, baseline_prediction_file, results_file, baseline_name, SET_NAME)
     result_line = [baseline_name, timestamp, 'n/a', 'n/a']
