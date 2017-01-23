@@ -24,15 +24,49 @@ DATA_PATH = "../../../data/input/input-"+SET_NAME+".xml"
 PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-$time.tsv")
 RESULTS_FILE = "../../../data/results/results-answers-cross-validation-"+SET_NAME+".tsv"
 CROSS_VALIDATION = True
+SPLIT_SETS_SIZE = 0 # 0 or lower will perform leave-1-out
 
 def predictions_path(run_id):
     return PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=run_id, time=timestamp)
 
+
 def run(run_id, feat_index=''):
+    if SPLIT_SETS_SIZE > 0:
+        run_split_sets(run_id, SPLIT_SETS_SIZE, feat_index)
+    else:
+        run_leave_one_out(run_id, feat_index)
+
+
+def run_leave_one_out(run_id, feat_index=''):
     print('--RUN_ID: ', run_id)
     ensure_required_directories_exist()
    
-    splits = 5
+    full_set = comment_utils.read_comments(DATA_PATH)
+   
+    if not os.path.exists(RESULTS_FILE):
+        # If the results file does not exist - calcualte the baselines
+        write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'Predictions', '', ''], RESULTS_FILE)
+        calculate_baseline(full_set, 0, 'all-negative', RESULTS_FILE)
+        calculate_baseline(full_set, 1, 'all-positive', RESULTS_FILE)
+
+    best_params, scoring = run_experiment(full_set, full_set, run_id, feat_index, True)
+
+    for i in range(0,len(full_set)):
+        print('running experiments for split', i)
+        train_set = list(full_set)
+        test_set = []
+        test_set.append(full_set[i])
+        train_set.remove(full_set[i])
+        print('LEAVE ONE OUT', len(test_set), len(train_set))
+        params, scoring = run_experiment(train_set, test_set, run_id, feat_index, False, best_params)
+
+    evaluate_test_sets(RESULTS_FILE, run_id, params, scoring)
+
+
+def run_split_sets(run_id, splits, feat_index=''):
+    print('--RUN_ID: ', run_id)
+    ensure_required_directories_exist()
+   
     set_parts = comment_utils.split_set_in_consecutive_parts(DATA_PATH, splits)
 
     full_set = []
