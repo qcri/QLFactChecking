@@ -27,6 +27,51 @@ def read_feature_set(set_name, feat_index):
         features_map = Features.add_features(features_map, Features.features_VEC_COSINES_THREAD(set_name))
     if feat_index == 'COSINES-incl':
         features_map = Features.add_features(features_map, Features.features_COSINES(set_name))
+
+    #linguistic Features
+    if feat_index == 'LINGF_BIAS_LEX-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_BIAS_LEX(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_HEDGES-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_HEDGES(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_IMPLICATIVES-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_IMPLICATIVES(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_ASSERTIVES-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_ASSERTIVES(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_FACTIVES-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_FACTIVES(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_REPORT_VERBS-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_REPORT_VERBS(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_All_BIAS_LEX-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_All_BIAS_LEX(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_STRONGSubj-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_STRONGSubj(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_WEAKSubj-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_WEAKSubj(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_NEGATIVES-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_NEGATIVES(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_POSITIVES-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_POSITIVES(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_MODALS-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_MODALS(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_NEGATIONS-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_NEGATIONS(set_name))
+    #linguistic Features
+    if feat_index == 'LINGF_All-incl':
+        features_map = Features.add_features(features_map, Features.features_LINGF_All(set_name))
+
+
     if feat_index == 'all':
         features_map = Features.add_features(features_map, Features.features_CATEGORIES(set_name))
         features_map = Features.add_features(features_map, Features.features_QUALITY(set_name))
@@ -40,6 +85,40 @@ def read_feature_set(set_name, feat_index):
         features_map = Features.add_features(features_map, Features.features_RANK_SAME_USER(set_name))
         features_map = Features.add_features(features_map, Features.features_VEC_COSINES_THREAD(set_name))
         features_map = Features.add_features(features_map, Features.features_COSINES(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_All(set_name)) #all linguistic Features
+
+    #linguistic Features
+    if feat_index == 'LINGF_All_BIAS_ADDED_TO_OTHERS':
+        features_map = Features.add_features(features_map, Features.features_CATEGORIES(set_name))
+        features_map = Features.add_features(features_map, Features.features_QUALITY(set_name))
+        features_map = Features.add_features(features_map, Features.features_TROLLNESS(set_name))
+        features_map = Features.add_features(features_map, Features.features_ACTIVITY(set_name))
+        features_map = Features.add_features(features_map, Features.features_CREDIBILITY(set_name))
+        features_map = Features.add_features(features_map, Features.features_SENTIMENT(set_name))
+        features_map = Features.add_features(features_map, Features.features_GOOGLE_VEC(set_name))
+        features_map = Features.add_features(features_map, Features.features_QL_VEC(set_name))
+        features_map = Features.add_features(features_map, Features.features_SYNTAX_VEC(set_name))
+        features_map = Features.add_features(features_map, Features.features_RANK_SAME_USER(set_name))
+        features_map = Features.add_features(features_map, Features.features_VEC_COSINES_THREAD(set_name))
+        features_map = Features.add_features(features_map, Features.features_COSINES(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_All_BIAS_LEX(set_name)) #all linguistic Features
+
+    #linguistic Features
+    if feat_index == 'LINGF_All-excl':
+        features_map = Features.add_features(features_map, Features.features_CATEGORIES(set_name))
+        features_map = Features.add_features(features_map, Features.features_QUALITY(set_name))
+        features_map = Features.add_features(features_map, Features.features_TROLLNESS(set_name))
+        features_map = Features.add_features(features_map, Features.features_ACTIVITY(set_name))
+        features_map = Features.add_features(features_map, Features.features_CREDIBILITY(set_name))
+        features_map = Features.add_features(features_map, Features.features_SENTIMENT(set_name))
+        features_map = Features.add_features(features_map, Features.features_GOOGLE_VEC(set_name))
+        features_map = Features.add_features(features_map, Features.features_QL_VEC(set_name))
+        features_map = Features.add_features(features_map, Features.features_SYNTAX_VEC(set_name))
+        features_map = Features.add_features(features_map, Features.features_RANK_SAME_USER(set_name))
+        features_map = Features.add_features(features_map, Features.features_VEC_COSINES_THREAD(set_name))
+        features_map = Features.add_features(features_map, Features.features_COSINES(set_name))
+        # features_map = Features.add_features(features_map, Features.features_LINGF_All(set_name)) #all linguistic Features
+
     if feat_index == 'CATEGORIES-excl':
         #features_map = Features.add_features(features_map, Features.features_CATEGORIES(set_name))
         features_map = Features.add_features(features_map, Features.features_QUALITY(set_name))
