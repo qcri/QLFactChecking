@@ -40,6 +40,63 @@ def features_COSINES(set_name):
     return read_features(set_name, "text_only.tc.cosines")
 
 
+#linguistic Features
+def features_LINGF_BIAS_LEX(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-bias-lexicon")
+
+#linguistic Features
+def features_LINGF_HEDGES(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-hedges")
+
+#linguistic Features
+def features_LINGF_IMPLICATIVES(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-implicatives")
+
+#linguistic Features
+def features_LINGF_ASSERTIVES(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-assertives")
+
+#linguistic Features
+def features_LINGF_FACTIVES(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-factives")
+
+#linguistic Features
+def features_LINGF_REPORT_VERBS(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-report-verbs")
+
+#linguistic Features
+def features_LINGF_All_BIAS_LEX(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-all-bias-lexicons")
+
+#linguistic Features
+def features_LINGF_STRONGSubj(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-strongSubj")
+
+#linguistic Features
+def features_LINGF_WEAKSubj(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-weakSubj")
+
+#linguistic Features
+def features_LINGF_NEGATIVES(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-negative-words")
+
+#linguistic Features
+def features_LINGF_POSITIVES(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-positive-words")
+
+#linguistic Features
+def features_LINGF_MODALS(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-modals")
+
+#linguistic Features
+def features_LINGF_NEGATIONS(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-negations")
+
+#linguistic Features
+def features_LINGF_All(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-all-linguistic-features")
+
+
 def read_features(set_name, suffix):
     path = ''
     file = string.Template("../../../$prefix1$set$prefix2.xml.tab_format.$suffix")
