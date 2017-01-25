@@ -41,6 +41,10 @@ RUNS = [
     ['COSINES-excl', 'COSINES-excl'],
     ['LINGF_All-excl', 'LINGF_All-excl'], #excluding all linguistic Features
     ['LINGF_All_BIAS_ADDED_TO_OTHERS', 'LINGF_All_BIAS_ADDED_TO_OTHERS'], #including all linguistic bias Features
+    ["IRF_Bing_snippets-incl", "IRF_Bing_snippets-incl"],
+    ["IRF_Google_snippets-incl", "IRF_Google_snippets-incl"],
+    ["IRF_ALL_snippets-incl", "IRF_ALL_snippets-incl"],
+    ["IRFeatures-excl", "IRFeatures-excl"],
     ['all', 'all'],
 ]
 

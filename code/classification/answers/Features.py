@@ -96,6 +96,46 @@ def features_LINGF_NEGATIONS(set_name):
 def features_LINGF_All(set_name):
     return read_features(set_name, "text_only.tc.linguisticFeatures-all-linguistic-features")
 
+#IR features
+def features_IR_Bing_snippets(set_name):
+    return read_features(set_name, "ir.bing_snippets")
+
+#IR features
+def features_IR_Google_snippets(set_name):
+    return read_features(set_name, "ir.google_snippets")
+
+#IR features
+def features_IR_All_snippets(set_name):
+    return read_features(set_name, "ir.ALL_snippets")
+
+#IR features
+def features_IR_Bing_webpages(set_name):
+    #TODO
+    return read_features(set_name, "ir.bing_webpages")
+
+#IR features
+def features_IR_Google_webpages(set_name):
+    #TODO
+    return read_features(set_name, "ir.google_webpages")
+
+def features_IR_ALL_webpages(set_name):
+    #TODO
+    return read_features(set_name, "ir.ALL_webpages")
+
+#IR features
+def features_IR_All_Bing(set_name):
+    #TODO
+    return read_features(set_name, "ir.ALL_Bing")
+
+#IR features
+def features_IR_ALL_Google(set_name):
+    #TODO
+    return read_features(set_name, "ir_ALL_Google")
+
+#IR features
+def features_IR_ALL(set_name):
+    #TODO
+    return read_features(set_name, "ir_ALL")
 
 def read_features(set_name, suffix):
     path = ''

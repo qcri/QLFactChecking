@@ -71,6 +71,16 @@ def read_feature_set(set_name, feat_index):
     if feat_index == 'LINGF_All-incl':
         features_map = Features.add_features(features_map, Features.features_LINGF_All(set_name))
 
+    #IR Features
+    if feat_index == 'IRF_Bing_snippets-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_Bing_snippets(set_name))
+
+    if feat_index == 'IRF_Google_snippets-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_Google_snippets(set_name))
+
+    if feat_index == 'IRF_ALL_snippets-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_All_snippets(set_name))
+
 
     if feat_index == 'all':
         features_map = Features.add_features(features_map, Features.features_CATEGORIES(set_name))
@@ -86,7 +96,23 @@ def read_feature_set(set_name, feat_index):
         features_map = Features.add_features(features_map, Features.features_VEC_COSINES_THREAD(set_name))
         features_map = Features.add_features(features_map, Features.features_COSINES(set_name))
         features_map = Features.add_features(features_map, Features.features_LINGF_All(set_name)) #all linguistic Features
+        features_map = Features.add_features(features_map, Features.features_IR_All_snippets(set_name)) # all IR features
 
+    if feat_index == 'IRFeatures-excl':
+        features_map = Features.add_features(features_map, Features.features_CATEGORIES(set_name))
+        features_map = Features.add_features(features_map, Features.features_QUALITY(set_name))
+        features_map = Features.add_features(features_map, Features.features_TROLLNESS(set_name))
+        features_map = Features.add_features(features_map, Features.features_ACTIVITY(set_name))
+        features_map = Features.add_features(features_map, Features.features_CREDIBILITY(set_name))
+        features_map = Features.add_features(features_map, Features.features_SENTIMENT(set_name))
+        features_map = Features.add_features(features_map, Features.features_GOOGLE_VEC(set_name))
+        features_map = Features.add_features(features_map, Features.features_QL_VEC(set_name))
+        features_map = Features.add_features(features_map, Features.features_SYNTAX_VEC(set_name))
+        features_map = Features.add_features(features_map, Features.features_RANK_SAME_USER(set_name))
+        features_map = Features.add_features(features_map, Features.features_VEC_COSINES_THREAD(set_name))
+        features_map = Features.add_features(features_map, Features.features_COSINES(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_All(set_name)) #all linguistic Features
+        #features_map = Features.add_features(features_map, Features.features_IR_All_snippets(set_name)) # all IR features
     #linguistic Features
     if feat_index == 'LINGF_All_BIAS_ADDED_TO_OTHERS':
         features_map = Features.add_features(features_map, Features.features_CATEGORIES(set_name))
