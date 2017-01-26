@@ -1,5 +1,13 @@
 import Features
 
+# Read multiple sets
+def read_feature_sets(set_name, feat_indeces):
+    features_map = {}    
+    for feat_index in feat_indeces:
+        features_from_index = read_feature_set(set_name, feat_index)
+        features_map = Features.add_features(features_map, features_from_index) 
+    return features_map
+
 def read_feature_set(set_name, feat_index):
     features_map = {}
 

@@ -30,7 +30,7 @@ CROSS_VALIDATION = True
 SPLIT_SETS_SIZE = 0
 
 def predictions_path(run_id):
-    return PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=run_id, time=timestamp)
+    return PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=run_id[:50], time=timestamp)
 
 
 def run(run_id, feat_index=''):
@@ -211,8 +211,10 @@ def read_features_from_index(data, set_name, feat_index):
     print('---Reading features from index for ' + set_name, feat_index) 
     X = []
     y = []
-    features_map = FeatureSets.read_feature_set(set_name, feat_index)
-
+    if isinstance(feat_index, list):
+        features_map = FeatureSets.read_feature_sets(set_name, feat_index)
+    else:
+        features_map = FeatureSets.read_feature_set(set_name, feat_index)
     for comment in data:
         # Set the features for each
         if comment.comment_id in features_map.keys():
