@@ -79,6 +79,31 @@ def read_feature_set(set_name, feat_index):
     if feat_index == 'LINGF_All-incl':
         features_map = Features.add_features(features_map, Features.features_LINGF_All(set_name))
 
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_BESTMATCH-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_ENTIREC-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_All-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_All_LEVENSHTEIN-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN(set_name))
+
     #IR Features
     if feat_index == 'IRF_Bing_snippets-incl':
         features_map = Features.add_features(features_map, Features.features_IR_Bing_snippets(set_name))
