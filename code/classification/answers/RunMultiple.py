@@ -1,6 +1,12 @@
 import RunCV
 
 RUNS = [
+    ['ARTICLES_SUPPORTS_BESTMATCH-incl', 'ARTICLES_SUPPORTS_BESTMATCH-incl'], #article supports
+    ['ARTICLES_SUPPORTS_ENTIREC-incl', 'ARTICLES_SUPPORTS_ENTIREC-incl'], #article supports
+    ['ARTICLES_SUPPORTS_All-incl', 'ARTICLES_SUPPORTS_All-incl'], #article supports
+    ['ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl'], #article supports
+    ['ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN-incl'], #article supports
+    ['ARTICLES_SUPPORTS_All_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_All_LEVENSHTEIN-incl'], #article supports
     ['LINGF_BIAS_LEX-incl', 'LINGF_BIAS_LEX-incl'], #linguistic Features
     ['LINGF_HEDGES-incl', 'LINGF_HEDGES-incl'], #linguistic Features
     ['LINGF_IMPLICATIVES-incl', 'LINGF_IMPLICATIVES-incl'], #linguistic Features
