@@ -40,6 +40,22 @@ def features_COSINES(set_name):
     return read_features(set_name, "text_only.tc.cosines")
 
 
+#article supports
+def features_ARTICLES_SUPPORTS_BESTMATCH(set_name):
+    return read_features(set_name, "text_only.tc.articles-supports-bestMatch")
+
+#article supports
+def features_ARTICLES_SUPPORTS_ENTIREC(set_name):
+    return read_features(set_name, "text_only.tc.articles-supports-entireC")
+
+#article supports
+def features_ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN(set_name):
+    return read_features(set_name, "text_only.tc.articles-supports-bestMatch-levenshtein")
+
+#article supports
+def features_ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN(set_name):
+    return read_features(set_name, "text_only.tc.articles-supports-entireC-levenshtein")
+
 #linguistic Features
 def features_LINGF_BIAS_LEX(set_name):
     return read_features(set_name, "text_only.tc.linguisticFeatures-bias-lexicon")
