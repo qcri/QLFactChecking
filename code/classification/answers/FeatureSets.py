@@ -79,7 +79,144 @@ def read_feature_set(set_name, feat_index):
         features_map = Features.add_features(features_map, Features.features_IR_Google_snippets(set_name))
 
     if feat_index == 'IRF_ALL_snippets-incl':
-        features_map = Features.add_features(features_map, Features.features_IR_All_snippets(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_Bing_snippets(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_Google_snippets(set_name))
+
+    if feat_index == 'IRF_Bing_snippets_qataronly-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qataronly(set_name))
+
+    if feat_index == 'IRF_Google_snippets_qataronly-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qataronly(set_name))
+
+    if feat_index == 'IRF_ALL_snippets_qataronly-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qataronly(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qataronly(set_name))
+
+    if feat_index == 'IRF_Bing_webpage_qataronly-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qataronly(set_name))
+
+    if feat_index == 'IRF_Google_webpage_qataronly-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qataronly(set_name))
+
+    if feat_index == 'IRF_ALL_webpages_qataronly-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qataronly(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qataronly(set_name))
+
+    if feat_index == 'IRF_ALL_Google_qataronly-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qataronly(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qataronly(set_name))
+
+    if feat_index == 'IRF_ALL_Bing_qataronly-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qataronly(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qataronly(set_name))
+
+    if feat_index == 'IRF_ALL_qataronly-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qataronly(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qataronly(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qataronly(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qataronly(set_name))
+
+    if feat_index == 'IRF_Bing_snippets_qataronly_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qataronly_splited(set_name))
+
+    if feat_index == 'IRF_Google_snippets_qataronly_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qataronly_splited(set_name))
+
+    if feat_index == 'IRF_ALL_snippets_qataronly_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qataronly_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qataronly_splited(set_name))
+
+    if feat_index == 'IRF_Bing_webpage_qataronly_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qataronly_splited(set_name))
+
+    if feat_index == 'IRF_Google_webpage_qataronly_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qataronly_splited(set_name))
+
+    if feat_index == 'IRF_ALL_webpages_qataronly_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qataronly_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qataronly_splited(set_name))
+
+    if feat_index == 'IRF_ALL_Google_qataronly_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qataronly_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qataronly_splited(set_name))
+
+    if feat_index == 'IRF_ALL_Bing_qataronly_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qataronly_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qataronly_splited(set_name))
+
+    if feat_index == 'IRF_ALL_qataronly_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qataronly_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qataronly_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qataronly_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qataronly_splited(set_name))
+
+    if feat_index == 'IRF_Bing_snippets_qataronly_splitted_others_bulk-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qatar_splited_others_bulk(set_name))
+
+    if feat_index == 'IRF_Google_snippets_qataronly_splitted_others_bulk-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qatar_splited_others_bulk(set_name))
+
+    if feat_index == 'IRF_ALL_snippets_qataronly_splitted_others_bulk-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qatar_splited_others_bulk(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qatar_splited_others_bulk(set_name))
+
+    if feat_index == 'IRF_Bing_webpage_qataronly_splitted_others_bulk-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qatar_splited_others_bulk(set_name))
+
+    if feat_index == 'IRF_Google_webpage_qataronly_splitted_others_bulk-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qatar_splited_others_bulk(set_name))
+
+    if feat_index == 'IRF_ALL_webpages_qataronly_splitted_others_bulk-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qatar_splited_others_bulk(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qatar_splited_others_bulk(set_name))
+
+    if feat_index == 'IRF_ALL_Google_qataronly_splitted_others_bulk-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qatar_splited_others_bulk(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qatar_splited_others_bulk(set_name))
+
+    if feat_index == 'IRF_ALL_Bing_qataronly_splitted_others_bulk-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qatar_splited_others_bulk(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qatar_splited_others_bulk(set_name))
+
+    if feat_index == 'IRF_ALL_qataronly_splitted_others_bulk-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qatar_splited_others_bulk(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qatar_splited_others_bulk(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qatar_splited_others_bulk(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qatar_splited_others_bulk(set_name))
+
+    if feat_index == 'IRF_Bing_snippets_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_splited(set_name))
+
+    if feat_index == 'IRF_Google_snippets_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_splited(set_name))
+
+    if feat_index == 'IRF_ALL_snippets_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_splited(set_name))
+
+    if feat_index == 'IRF_Bing_webpage_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_splited(set_name))
+
+    if feat_index == 'IRF_Google_webpage_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_splited(set_name))
+
+    if feat_index == 'IRF_ALL_webpages_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_splited(set_name))
+
+    if feat_index == 'IRF_ALL_Google_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_splited(set_name))
+
+    if feat_index == 'IRF_ALL_Bing_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_splited(set_name))
+
+    if feat_index == 'IRF_ALL_splitted-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_splited(set_name))
 
 
     if feat_index == 'all':

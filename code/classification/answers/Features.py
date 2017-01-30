@@ -105,37 +105,78 @@ def features_IR_Google_snippets(set_name):
     return read_features(set_name, "ir.google_snippets")
 
 #IR features
-def features_IR_All_snippets(set_name):
-    return read_features(set_name, "ir.ALL_snippets")
-
-#IR features
 def features_IR_Bing_webpages(set_name):
-    #TODO
+
     return read_features(set_name, "ir.bing_webpages")
 
 #IR features
 def features_IR_Google_webpages(set_name):
-    #TODO
     return read_features(set_name, "ir.google_webpages")
 
-def features_IR_ALL_webpages(set_name):
-    #TODO
-    return read_features(set_name, "ir.ALL_webpages")
+#IR features
+def features_IR_bing_snippets_qataronly(set_name):
+    return read_features(set_name, "ir.bing_snippets_qataronly")
 
 #IR features
-def features_IR_All_Bing(set_name):
-    #TODO
-    return read_features(set_name, "ir.ALL_Bing")
+def features_IR_google_snippets_qataronly(set_name):
+    return read_features(set_name, "ir.google_snippets_qataronly")
 
 #IR features
-def features_IR_ALL_Google(set_name):
-    #TODO
-    return read_features(set_name, "ir_ALL_Google")
+def features_IR_bing_webpages_qataronly(set_name):
+
+    return read_features(set_name, "ir.bing_webpages_qataronly")
 
 #IR features
-def features_IR_ALL(set_name):
-    #TODO
-    return read_features(set_name, "ir_ALL")
+def features_IR_google_webpages_qataronly(set_name):
+    return read_features(set_name, "ir.google_webpages_qataronly")
+
+#IR features
+def features_IR_bing_snippets_qataronly_splited(set_name):
+    return read_features(set_name, "ir.bing_snippets_qataronly_splited")
+
+#IR features
+def features_IR_google_snippets_qataronly_splited(set_name):
+    return read_features(set_name, "ir.google_snippets_qataronly_splited")
+
+#IR features
+def features_IR_bing_webpages_qataronly_splited(set_name):
+    return read_features(set_name, "ir.bing_webpages_qataronly_splited")
+
+#IR features
+def features_IR_google_webpages_qataronly_splited(set_name):
+    return read_features(set_name, "ir.google_webpages_qataronly_splited")
+
+#IR features
+def features_IR_bing_snippets_qatar_splited_others_bulk(set_name):
+    return read_features(set_name, "ir.bing_snippets_qatar_splited_others_bulk")
+
+#IR features
+def features_IR_google_snippets_qatar_splited_others_bulk(set_name):
+    return read_features(set_name, "ir.google_snippets_qatar_splited_others_bulk")
+
+#IR features
+def features_IR_bing_webpages_qatar_splited_others_bulk(set_name):
+    return read_features(set_name, "ir.bing_webpages_qatar_splited_others_bulk")
+
+#IR features
+def features_IR_google_webpages_qatar_splited_others_bulk(set_name):
+    return read_features(set_name, "ir.google_webpages_qatar_splited_others_bulk")
+
+#IR features
+def features_IR_bing_snippets_splited(set_name):
+    return read_features(set_name, "ir.bing_snippets_splited")
+
+#IR features
+def features_IR_google_snippets_splited(set_name):
+    return read_features(set_name, "ir.google_snippets_splited")
+
+#IR features
+def features_IR_bing_webpages_splited(set_name):
+    return read_features(set_name, "ir.bing_webpages_splited")
+
+#IR features
+def features_IR_google_webpages_splited(set_name):
+    return read_features(set_name, "ir.google_webpages_splited")
 
 def read_features(set_name, suffix):
     path = ''
