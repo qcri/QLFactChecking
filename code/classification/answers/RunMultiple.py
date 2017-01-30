@@ -1,6 +1,12 @@
 import RunCV
 
 RUNS = [
+    ['ARTICLES_SUPPORTS_BESTMATCH-incl', 'ARTICLES_SUPPORTS_BESTMATCH-incl'], #article supports
+    ['ARTICLES_SUPPORTS_ENTIREC-incl', 'ARTICLES_SUPPORTS_ENTIREC-incl'], #article supports
+    ['ARTICLES_SUPPORTS_All-incl', 'ARTICLES_SUPPORTS_All-incl'], #article supports
+    ['ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl'], #article supports
+    ['ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN-incl'], #article supports
+    ['ARTICLES_SUPPORTS_All_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_All_LEVENSHTEIN-incl'], #article supports
     ['LINGF_BIAS_LEX-incl', 'LINGF_BIAS_LEX-incl'], #linguistic Features
     ['LINGF_HEDGES-incl', 'LINGF_HEDGES-incl'], #linguistic Features
     ['LINGF_IMPLICATIVES-incl', 'LINGF_IMPLICATIVES-incl'], #linguistic Features
@@ -27,31 +33,27 @@ RUNS = [
     ['RANK_SAME_USER-incl', 'RANK_SAME_USER-incl'],
     ['VEC_COSINES_THREAD-incl', 'VEC_COSINES_THREAD-incl'],
     ['COSINES-incl', 'COSINES-incl'],
-    ['CATEGORIES-excl', 'CATEGORIES-excl'],
-    ['QUALITY-excl', 'QUALITY-excl'],
-    ['TROLLNESS-excl', 'TROLLNESS-excl'],
-    ['ACTIVITY-excl', 'ACTIVITY-excl'],
-    ['CREDIBILITY-excl', 'CREDIBILITY-excl'],
-    ['SENTIMENT-excl', 'SENTIMENT-excl'],
-    ['GOOGLE_VEC-excl', 'GOOGLE_VEC-excl'],
-    ['QL_VEC-excl', 'QL_VEC-excl'],
-    ['SYNTAX_VEC-excl', 'SYNTAX_VEC-excl'],
-    ['RANK_SAME_USER-excl', 'RANK_SAME_USER-excl'],
-    ['VEC_COSINES_THREAD-excl', 'VEC_COSINES_THREAD-excl'],
-    ['COSINES-excl', 'COSINES-excl'],
-    ['LINGF_All-excl', 'LINGF_All-excl'], #excluding all linguistic Features
-    ['LINGF_All_BIAS_ADDED_TO_OTHERS', 'LINGF_All_BIAS_ADDED_TO_OTHERS'], #including all linguistic bias Features
+    # ['CATEGORIES-excl', 'CATEGORIES-excl'],
+    # ['QUALITY-excl', 'QUALITY-excl'],
+    # ['TROLLNESS-excl', 'TROLLNESS-excl'],
+    # ['ACTIVITY-excl', 'ACTIVITY-excl'],
+    # ['CREDIBILITY-excl', 'CREDIBILITY-excl'],
+    # ['SENTIMENT-excl', 'SENTIMENT-excl'],
+    # ['GOOGLE_VEC-excl', 'GOOGLE_VEC-excl'],
+    # ['QL_VEC-excl', 'QL_VEC-excl'],
+    # ['SYNTAX_VEC-excl', 'SYNTAX_VEC-excl'],
+    # ['RANK_SAME_USER-excl', 'RANK_SAME_USER-excl'],
+    # ['VEC_COSINES_THREAD-excl', 'VEC_COSINES_THREAD-excl'],
+    # ['COSINES-excl', 'COSINES-excl'],
+    # ['LINGF_All-excl', 'LINGF_All-excl'], #excluding all linguistic Features
+    # ['LINGF_All_BIAS_ADDED_TO_OTHERS', 'LINGF_All_BIAS_ADDED_TO_OTHERS'], #including all linguistic bias Features
     ["IRF_Bing_snippets-incl", "IRF_Bing_snippets-incl"],
     ["IRF_Google_snippets-incl", "IRF_Google_snippets-incl"],
     ["IRF_ALL_snippets-incl", "IRF_ALL_snippets-incl"],
-    ["IRFeatures-excl", "IRFeatures-excl"],
-    ['all', 'all'],
+    # ["IRFeatures-excl", "IRFeatures-excl"],
+    # ['all', 'all'],
 ]
 
-
-RUNS_ = [
-    ['all-negative', 'COSINES-incl'],
-]
 
 def main():
     print('RunMultiple.run_all')

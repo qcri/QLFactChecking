@@ -1,5 +1,13 @@
 import Features
 
+# Read multiple sets
+def read_feature_sets(set_name, feat_indeces):
+    features_map = {}    
+    for feat_index in feat_indeces:
+        features_from_index = read_feature_set(set_name, feat_index)
+        features_map = Features.add_features(features_map, features_from_index) 
+    return features_map
+
 def read_feature_set(set_name, feat_index):
     features_map = {}
 
@@ -70,6 +78,31 @@ def read_feature_set(set_name, feat_index):
     #linguistic Features
     if feat_index == 'LINGF_All-incl':
         features_map = Features.add_features(features_map, Features.features_LINGF_All(set_name))
+
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_BESTMATCH-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_ENTIREC-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_All-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_All_LEVENSHTEIN-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN(set_name))
 
     #IR Features
     if feat_index == 'IRF_Bing_snippets-incl':
