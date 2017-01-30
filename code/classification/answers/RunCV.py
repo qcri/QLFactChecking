@@ -18,9 +18,12 @@ import Features
 import FeatureSets
 
 timestamp = time.strftime('%d-%m-%Y %H.%M.%S')
+EVALUATE_WITH_SCORE = True
 
 SET_NAME = 'dev+test'
 DATA_PATH = "../../../data/input/input-"+SET_NAME+".xml"
+
+SCORE_PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-map.tsv")
 PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-$time.tsv")
 RESULTS_FILE = "../../../data/results/results-answers-cross-validation-"+SET_NAME+".tsv"
 CROSS_VALIDATION = True
@@ -29,15 +32,24 @@ CROSS_VALIDATION = True
 # >0: splits size
 SPLIT_SETS_SIZE = 0
 
+
 def predictions_path(run_id):
     return PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=run_id[:50], time=timestamp)
 
+def score_predictions_path(run_id):
+    return SCORE_PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=run_id[:50])
 
 def run(run_id, feat_index=''):
+    if EVALUATE_WITH_SCORE:
+        # clear the predictions file to overwrite it with the latest result
+        if os.path.exists(score_predictions_path(run_id)):
+            os.remove(score_predictions_path(run_id))
     if SPLIT_SETS_SIZE >= 0:
         run_split_sets(run_id, SPLIT_SETS_SIZE, feat_index)
     else:
         run_leave_one_out(run_id, feat_index)
+    
+
 
 
 def run_leave_one_out(run_id, feat_index=''):
@@ -48,7 +60,7 @@ def run_leave_one_out(run_id, feat_index=''):
    
     if not os.path.exists(RESULTS_FILE):
         # If the results file does not exist - calcualte the baselines
-        write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'Predictions', '', ''], RESULTS_FILE)
+        write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'MAP@1', 'MAP@3', 'MAP@5', 'Predictions', '', ''], RESULTS_FILE)
         calculate_baseline(full_set, 0, 'all-negative', RESULTS_FILE)
         calculate_baseline(full_set, 1, 'all-positive', RESULTS_FILE)
 
@@ -83,9 +95,13 @@ def run_split_sets(run_id, splits, feat_index=''):
 
     if not os.path.exists(RESULTS_FILE):
         # If the results file does not exist - calcualte the baselines
-        write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'Predictions', '', ''], RESULTS_FILE)
+        write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'MAP@1', 'MAP@3', 'MAP@5', 'Predictions', '', ''], RESULTS_FILE)
         calculate_baseline(full_set, 0, 'all-negative', RESULTS_FILE)
         calculate_baseline(full_set, 1, 'all-positive', RESULTS_FILE)
+        if EVALUATE_WITH_SCORE:
+            # If the results file does not exist - calcualte the baselines
+            calculate_baseline_with_score(full_set, 'baseline-default-comment-order', RESULTS_FILE)
+            calculate_baseline_with_score_oracle(full_set, 'baseline-oracle', RESULTS_FILE)
 
     best_params, scoring = run_experiment(full_set, full_set, run_id, feat_index, True)
 
@@ -109,6 +125,27 @@ def calculate_baseline(data_set, baseline_label, baseline_name, results_file):
     result_line = [baseline_name, timestamp, 'n/a', 'n/a']
     result_line.extend(baseline_eval)
     write_to_csv_file(result_line, results_file)
+
+def calculate_baseline_with_score(data_set, baseline_name, results_file):
+    print('calculating baseline:', baseline_name)
+    baseline_prediction_file = score_predictions_path(baseline_name)
+    for comment in data_set:        
+        write_to_csv_file([comment.comment_id, 1/cid_to_int_extracted(comment.comment_id)], baseline_prediction_file)
+    baseline_eval = evaluate(DATA_PATH, baseline_prediction_file, results_file, baseline_name, SET_NAME)
+    result_line = [baseline_name, timestamp, 'n/a', 'n/a']
+    result_line.extend(baseline_eval)
+    write_to_csv_file(result_line, results_file)
+
+def calculate_baseline_with_score_oracle(data_set, baseline_name, results_file):
+    print('calculating baseline:', baseline_name)
+    baseline_prediction_file = score_predictions_path(baseline_name)
+    for comment in data_set:        
+        write_to_csv_file([comment.comment_id, comment.label], baseline_prediction_file)
+    baseline_eval = evaluate(DATA_PATH, baseline_prediction_file, results_file, baseline_name, SET_NAME)
+    result_line = [baseline_name, timestamp, 'n/a', 'n/a']
+    result_line.extend(baseline_eval)
+    write_to_csv_file(result_line, results_file)
+
 
 def ensure_required_directories_exist():
     ensure_directory_exists('../../../data/predictions')
@@ -135,16 +172,22 @@ def run_experiment(train_data, dev_data, run_id, feat_index='', full_set=False, 
         model, best_params, scoring = build_model(train_features, train_labels)
     else:
         model, best_params, scoring = build_model(train_features, train_labels, params)
-        # Predict the dev and train data
+        # Predict the dev and train data        
         dev_predicted = model.predict(dev_features)
+        if EVALUATE_WITH_SCORE:
+            dev_predicted_scores = model.predict_proba(dev_features)
 
         print(dev_predicted)
 
         for (i,comment) in enumerate(dev_data):
             comment.predicted_label = dev_predicted[i]
+            if EVALUATE_WITH_SCORE:
+                comment.predicted_score = dev_predicted_scores[i][1]
 
         # Write the predicted labels to file
         write_predictions_to_file(dev_data, predictions_path(run_id))
+        if EVALUATE_WITH_SCORE:
+            write_score_predictions_to_file(dev_data, score_predictions_path(run_id))
 
     # evaluate and save the result
     return best_params, scoring
@@ -153,10 +196,14 @@ def write_predictions_to_file(data, file):
     for comment in data:
         write_to_csv_file([comment.comment_id, comment.predicted_label], file)
 
+def write_score_predictions_to_file(data, file):
+    for comment in data:
+        write_to_csv_file([comment.comment_id, comment.predicted_score], file)
+
 def evaluate_test_sets(results_file, run_id, best_params, scoring):
     # write header:
     if not os.path.exists(results_file):
-        write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'Predictions', '', ''], results_file)
+        write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'MAP@1', 'MAP@3', 'MAP@5', 'Predictions', '', ''], results_file)
 
     result_line = [run_id, timestamp, best_params, scoring]
 
@@ -165,6 +212,49 @@ def evaluate_test_sets(results_file, run_id, best_params, scoring):
     result_line.extend(dev_eval)
 
     write_to_csv_file(result_line, results_file)
+
+
+def calculate_map(p, gold_labels_file, score_predictions_file):
+    gold_labels = comment_utils.read_comment_labels_from_xml(gold_labels_file)
+    predicted_scores = comment_utils.read_comment_scores_from_tsv(score_predictions_file)
+
+    # print(gold_labels)
+    # print(predicted_scores)
+
+    map_value = 0
+    scores = {}
+
+    # Put all values in a map for each query
+    for comment_id, predicted_score in predicted_scores.items():
+        qid = qid_from_cid(comment_id)
+        gold_label = gold_labels[comment_id]
+        if not qid in scores.keys():
+            scores[qid] = {}
+        scores[qid][predicted_score] = gold_label
+
+    for query, score_label_mapping in scores.items():
+        #print(query, score_label_mapping)
+        sorted_scores = sorted(score_label_mapping.keys(), reverse=True)
+        average_precision = 0
+        limit = min(p, len(sorted_scores))
+        count_positive_labels = 0
+        for i in range(0,limit):
+            score = sorted_scores[i]
+            label = score_label_mapping[score]
+            count_positive_labels += int(label)
+            average_precision += count_positive_labels/(i+1)
+
+        map_value += average_precision/limit
+
+    map_value /= len(scores.items())
+
+    #print(map_value)
+
+    return map_value
+
+
+
+
 
 def evaluate(gold_labels_file, prediction_file, results_file, run_id, set_name):
     gold_labels = comment_utils.read_comment_labels_from_xml(gold_labels_file)
@@ -204,7 +294,13 @@ def evaluate(gold_labels_file, prediction_file, results_file, run_id, set_name):
 
     f1 = 2*true_positives/(2*true_positives + false_negatives + false_positives)
 
-    return [set_name, accuracy, precision, recall, f1, confusion_matrix, confusion_matrix2, confusion_matrix3]
+    map_at_1 = map_at_3 = map_at_5 = 'n/a'
+    if EVALUATE_WITH_SCORE and os.path.exists(score_predictions_path(run_id)):
+        map_at_1 = calculate_map(1, DATA_PATH, score_predictions_path(run_id))
+        map_at_3 = calculate_map(3, DATA_PATH, score_predictions_path(run_id))
+        map_at_5 = calculate_map(5, DATA_PATH, score_predictions_path(run_id))
+
+    return [set_name, accuracy, precision, recall, f1, map_at_1, map_at_3, map_at_5, confusion_matrix, confusion_matrix2, confusion_matrix3]
 
 def read_features_from_index(data, set_name, feat_index):
     set_name = 'dev+test'
@@ -261,11 +357,11 @@ def build_model(X, y, params = None, scoring='accuracy'):
     else:
         print('Perform grid search for finding the best params...')
         param_grid = [
-            {'C': [0.025, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 100, 128, 256, 500, 1000], 'kernel': ['linear']},
-            {'C': [0.025, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 100, 128, 256, 500, 1000], 'gamma': [2, 1, 0.5, 0.3, 0.2, 0.1, 0.01, 0.001, 0.0001], 'kernel': ['rbf']},
+            {'C': [0.025, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 100, 128, 256, 500, 1000], 'kernel': ['linear'], 'probability': [True]},
+            {'C': [0.025, 0.25, 0.5, 1, 2, 4, 8, 16, 32, 64, 100, 128, 256, 500, 1000], 'gamma': [2, 1, 0.5, 0.3, 0.2, 0.1, 0.01, 0.001, 0.0001], 'kernel': ['rbf'], 'probability': [True]},
         ]
         svr = SVC()
-        clf = GridSearchCV(svr, param_grid, scoring=scoring)    
+        clf = GridSearchCV(svr, param_grid, scoring=scoring)
 
     #clf = SVC(C=2, gamma=0.2)
     clf.fit(X, y)
@@ -303,12 +399,19 @@ def qid_to_int(qid):
     resq = int(part1q)*10000000 + int(part2q)*1000
     return resq
 
+def qid_from_cid(cid):
+    return cid[cid.find('Q'):cid.find('_C')]
+
 def cid_to_int(cid):
     part1c = cid[cid.find('Q')+1:cid.find('_R')]
     part2c = cid[cid.find('_R')+2:cid.find('_C')]
     part3c = cid[cid.find('_C')+2:]
     resc = int(part1c)*10000000 + int(part2c)*1000 + int(part3c)
     return resc
+
+def cid_to_int_extracted(cid):
+    return int(cid[cid.find('_C')+2:])
+    
 
 def write_to_csv_file(array, file_path):
     with open(file_path, 'a+', newline='') as csvfile:
@@ -317,3 +420,8 @@ def write_to_csv_file(array, file_path):
 
 # Start here
 #main()
+
+
+#pred_file = "../../../data/predictions/predicted-labels-dev+test-baseline-oracle-map.tsv"
+pred_file = "../../../data/predictions/predicted-labels-dev+test-baseline-default-comment-order-map.tsv"
+calculate_map(1, DATA_PATH, pred_file)
