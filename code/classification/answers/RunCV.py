@@ -231,6 +231,8 @@ def calculate_map(p, gold_labels_file, score_predictions_file):
     map_value = 0
     scores = {}
 
+    counter = 0
+
     # Put all values in a map for each query
     for comment_id, predicted_score in predicted_scores.items():
         qid = qid_from_cid(comment_id)
@@ -240,22 +242,32 @@ def calculate_map(p, gold_labels_file, score_predictions_file):
         scores[qid][predicted_score] = gold_label
 
     for query, score_label_mapping in scores.items():
-        # print(query, score_label_mapping)
-        sorted_scores = sorted(score_label_mapping.keys(), reverse=True)
-        average_precision = 0
-        limit = min(p, len(sorted_scores))
-        count_positive_labels = 0
-        for i in range(0,limit):
-            score = sorted_scores[i]
-            label = score_label_mapping[score]
-            count_positive_labels += int(label)
-            average_precision += count_positive_labels/(i+1)
+        
 
-        map_value += average_precision/limit
+        if 1 in score_label_mapping.values():
+            counter += 1
+            # print(query, score_label_mapping)
+            sorted_scores = sorted(score_label_mapping.keys(), reverse=True)
+            average_precision = 0
+            limit = min(p, len(sorted_scores))
 
-    map_value /= len(scores.items())
+            count_positive_labels = 0
+            for i in range(0,limit):
+                score = sorted_scores[i]
+                label = score_label_mapping[score]
+                count_positive_labels += int(label)
+                average_precision += count_positive_labels/(i+1)
+
+            # print(limit, ': ap=', average_precision, average_precision/limit)
+
+            map_value += average_precision/limit
+
+    # print(map_value, len(scores.items()), counter)
+
+    map_value /= counter
 
     # print(map_value)
+    # print(counter)
 
     return map_value
 
