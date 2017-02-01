@@ -17,7 +17,10 @@ import comment_utils
 import Features
 import FeatureSets
 
-timestamp = time.strftime('%d-%m-%Y %H.%M.%S')
+# timestamp = time.strftime('%d-%m-%Y %H.%M.%S')
+# We do not want to always have the timestamp, we will clear the predictions file every time instead
+# This way we will not produce a huge amount of unused files and will always have the latest version.
+timestamp = '' 
 EVALUATE_WITH_SCORE = True
 
 SET_NAME = 'dev+test'
@@ -44,6 +47,8 @@ def run(run_id, feat_index=''):
         # clear the predictions file to overwrite it with the latest result
         if os.path.exists(score_predictions_path(run_id)):
             os.remove(score_predictions_path(run_id))
+    if os.path.exists(predictions_path(run_id)):
+            os.remove(predictions_path(run_id))
     if SPLIT_SETS_SIZE >= 0:
         run_split_sets(run_id, SPLIT_SETS_SIZE, feat_index)
     else:
@@ -242,8 +247,6 @@ def calculate_map(p, gold_labels_file, score_predictions_file):
         scores[qid][predicted_score] = gold_label
 
     for query, score_label_mapping in scores.items():
-        
-
         if 1 in score_label_mapping.values():
             counter += 1
             # print(query, score_label_mapping)
@@ -255,12 +258,13 @@ def calculate_map(p, gold_labels_file, score_predictions_file):
             for i in range(0,limit):
                 score = sorted_scores[i]
                 label = score_label_mapping[score]
-                count_positive_labels += int(label)
-                average_precision += count_positive_labels/(i+1)
-
-            # print(limit, ': ap=', average_precision, average_precision/limit)
-
-            map_value += average_precision/limit
+                #print(score, label)
+                if label == 1:
+                    count_positive_labels += 1
+                    average_precision += count_positive_labels/(i+1)
+            # print(count_positive_labels, i+1)
+            map_value += average_precision / count_positive_labels
+            # print('ap, limit, map=', average_precision, limit, map_value)
 
     # print(map_value, len(scores.items()), counter)
 
@@ -270,9 +274,6 @@ def calculate_map(p, gold_labels_file, score_predictions_file):
     # print(counter)
 
     return map_value
-
-
-
 
 
 def evaluate(gold_labels_file, prediction_file, results_file, run_id, set_name):
@@ -441,4 +442,4 @@ def write_to_csv_file(array, file_path):
 
 #pred_file = "../../../data/predictions/predicted-labels-dev+test-baseline-oracle-map.tsv"
 # pred_file = "../../../data/predictions/predicted-labels-dev+test-baseline-default-comment-order-map.tsv"
-# calculate_map(10, DATA_PATH, pred_file)
+# print(calculate_map(10, DATA_PATH, pred_file))
