@@ -3,8 +3,8 @@ import RunCV
 RUNS = [
     # ['ARTICLES_SUPPORTS_BESTMATCH-incl', 'ARTICLES_SUPPORTS_BESTMATCH-incl'], #article supports
     # ['ARTICLES_SUPPORTS_ENTIREC-incl', 'ARTICLES_SUPPORTS_ENTIREC-incl'], #article supports
-    ['ARTICLES_SUPPORTS_All-incl', 'ARTICLES_SUPPORTS_All-incl'], #article supports
-    # ['ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl'], #article supports
+    # ['ARTICLES_SUPPORTS_All-incl', 'ARTICLES_SUPPORTS_All-incl'], #article supports
+    ['ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl'], #article supports
     # ['ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN-incl'], #article supports
     # ['ARTICLES_SUPPORTS_All_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_All_LEVENSHTEIN-incl'], #article supports
     # ['LINGF_BIAS_LEX-incl', 'LINGF_BIAS_LEX-incl'], #linguistic Features
@@ -47,12 +47,12 @@ RUNS = [
     # ['COSINES-excl', 'COSINES-excl'],
     # ['LINGF_All-excl', 'LINGF_All-excl'], #excluding all linguistic Features
     # ['LINGF_All_BIAS_ADDED_TO_OTHERS', 'LINGF_All_BIAS_ADDED_TO_OTHERS'], #including all linguistic bias Features
-    # ["IRF_ALL_Bing_qataronly-incl", "IRF_ALL_Bing_qataronly-incl"],
+    ["IRF_ALL_Bing_qataronly-incl", "IRF_ALL_Bing_qataronly-incl"],
     # ["IRF_ALL_webpages_qataronly_splitted-incl", "IRF_ALL_webpages_qataronly_splitted-incl"],
     # ["IRF_Bing_webpage_splitted-incl", "IRF_Bing_webpage_splitted-incl"],
     # ["IRF_ALL_Google_qataronly_splitted_others_bulk-incl", "IRF_ALL_Google_qataronly_splitted_others_bulk-incl"],
     # ["IRF_Google_snippets_qataronly_splitted_others_bulk-incl", "IRF_Google_snippets_qataronly_splitted_others_bulk-incl"],
-    ["IRF_ALL-incl", "IRF_ALL-incl"],
+    # ["IRF_ALL-incl", "IRF_ALL-incl"],
 
     # ["IRFeatures-excl", "IRFeatures-excl"],
     # ['all', 'all'],
