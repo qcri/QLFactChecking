@@ -75,6 +75,21 @@ def read_comment_labels_from_tsv(input_file):
                 
     return comment_labels
 
+def read_comment_scores_from_tsv(input_file):
+    comment_labels = {}
+    with open(input_file,encoding="utf8") as csvfile:
+        csvreader = csv.reader(csvfile, delimiter='\t')
+        for row in csvreader:
+            for index,value in enumerate(row):
+                label = float(row[1])
+                # if label == '1':
+                #     label = 1
+                # else: 
+                #     label = 0
+                comment_labels[row[0]] = label
+                
+    return comment_labels
+
 def get_label(original_label):
     if original_label  == 'True':
         return 1

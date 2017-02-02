@@ -17,5 +17,14 @@ In order to run the classificaiton, execute the file *RunMultiple.py* in directo
 
 The results will be saved in directory: *data/results*. The predictions for each examples will be saved in directory *data/predictions*.
 
+## Feature Combinations
+
+To run the features combinations, execute the file **combine_best_feature_groups.py**.
+
+The results are read from file *data/results/results-answers-cross-validation-dev+test.tsv* (this file is also configured in **combine_best_feature_groups.py -> RESULTS_FILE** ) and are written in the same file.
+
+To specify whether the results should be sorted by Accuracy or MAP, change the value of **combine_best_feature_groups.py -> RESULT_SCORE_INDEX**. You can also change the prefix of the runs, to differ them in the results file, in **combine_best_feature_groups.py -> RUN_PREFIX**.
+
+
 ## Features
   **TODO**

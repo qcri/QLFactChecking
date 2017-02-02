@@ -12,3 +12,4 @@ class Comment:
         self.date = cdate
         self.label = 0
         self.predicted_label = 0
+        self.predicted_score = 0

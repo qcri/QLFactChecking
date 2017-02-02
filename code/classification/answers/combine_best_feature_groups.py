@@ -8,7 +8,13 @@ import csv, operator
 ################################
 
 # This is the index of the column of the result we are comparing in the results file.
-RESULT_SCORE_INDEX = 5
+ACCURACY_INDEX = 5
+MAP_INDEX = 9
+
+# To change whether runs should be sorted by accuracy or MAP, change the values below:
+RESULT_SCORE_INDEX = ACCURACY_INDEX
+RUN_PREFIX = 'TOP_'
+
 SET_NAME = 'dev+test'
 RESULTS_FILE = "../../../data/results/results-answers-cross-validation-"+SET_NAME+".tsv"
 
@@ -20,7 +26,7 @@ def main():
     # 2. combine the features from the feature group
     best_results = read_best_results()
 
-    max_index = max(TOP_N_TO, len(best_results))
+    max_index = min(TOP_N_TO, len(best_results))
 
     # for group_score in best_results:
     #     group = group_score[0]
@@ -30,7 +36,7 @@ def main():
     groups_names_str = ''
     for i in range(0, max_index):
         n = i+1
-        index_name = 'TOP_'+str(n)
+        index_name = RUN_PREFIX+str(n)
         groups_names.append(best_results[i][0])
         if groups_names_str != '':
             groups_names_str += ', '    
