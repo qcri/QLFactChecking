@@ -25,9 +25,11 @@ time_string = time.strftime('%d-%m-%Y %H.%M.%S')
 EVALUATE_WITH_SCORE = True
 
 SET_NAME = 'dev+test'
-TEST_SET_NAME = 'dev+test' #'train1'
+TEST_SET_NAME = 'train1'
 DATA_PATH = "../../../data/input/input-"+SET_NAME+".xml"
 TEST_DATA_PATH = "../../../data/input/input-"+TEST_SET_NAME+".xml"
+
+EVAL_ON_TEST_SET = True
 
 SCORE_PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-map.tsv")
 PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-$time.tsv")
@@ -57,12 +59,14 @@ def clear_prediction_files(run_id):
         # clear the predictions file to overwrite it with the latest result
         if os.path.exists(score_predictions_path(run_id)):
             os.remove(score_predictions_path(run_id))
-        if os.path.exists(score_predictions_path(run_id, TEST_SET_NAME)):
-            os.remove(score_predictions_path(run_id, TEST_SET_NAME))
+        if EVAL_ON_TEST_SET:
+            if os.path.exists(score_predictions_path(run_id, TEST_SET_NAME)):
+                os.remove(score_predictions_path(run_id, TEST_SET_NAME))
     if os.path.exists(predictions_path(run_id)):
         os.remove(predictions_path(run_id))
-    if os.path.exists(predictions_path(run_id, TEST_SET_NAME)):
-        os.remove(predictions_path(run_id, TEST_SET_NAME))
+    if EVAL_ON_TEST_SET:
+        if os.path.exists(predictions_path(run_id, TEST_SET_NAME)):
+            os.remove(predictions_path(run_id, TEST_SET_NAME))
 
 def run_leave_one_out(run_id, feat_index=''):
     print('--RUN_ID: ', run_id)
@@ -121,14 +125,15 @@ def run_split_sets(run_id, splits, feat_index=''):
             calculate_baseline_with_score_oracle(full_set, 'ranking-baseline-oracle', RESULTS_FILE)
             calculate_baseline_with_score_random(full_set, 'ranking-baseline-random', RESULTS_FILE)
 
-        # calculate baselines for test set
-        calculate_baseline(test_set, 0, 'classification-baseline-all-negative', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
-        calculate_baseline(test_set, 1, 'classification-baseline-all-positive', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
-        if EVALUATE_WITH_SCORE:
-            # If the results file does not exist - calcualte the baselines
-            calculate_baseline_with_score(test_set, 'ranking-baseline-default-comment-order', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
-            calculate_baseline_with_score_oracle(test_set, 'ranking-baseline-oracle', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
-            calculate_baseline_with_score_random(test_set, 'ranking-baseline-random', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+        if EVAL_ON_TEST_SET:
+            # calculate baselines for test set
+            calculate_baseline(test_set, 0, 'classification-baseline-all-negative', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+            calculate_baseline(test_set, 1, 'classification-baseline-all-positive', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+            if EVALUATE_WITH_SCORE:
+                # If the results file does not exist - calcualte the baselines
+                calculate_baseline_with_score(test_set, 'ranking-baseline-default-comment-order', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+                calculate_baseline_with_score_oracle(test_set, 'ranking-baseline-oracle', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+                calculate_baseline_with_score_random(test_set, 'ranking-baseline-random', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
 
     best_params, scoring = run_experiment(full_set, full_set, run_id, feat_index, True)
 
@@ -143,8 +148,9 @@ def run_split_sets(run_id, splits, feat_index=''):
     evaluate_test_sets(RESULTS_FILE, run_id, params, scoring)
 
     # predict and evaluate the test set    
-    params, scoring = run_experiment(full_set, test_set, run_id, feat_index, False, best_params, TEST_SET_NAME)
-    evaluate_test_sets(RESULTS_FILE, run_id, params, scoring, TEST_SET_NAME, TEST_DATA_PATH)
+    if EVAL_ON_TEST_SET:
+        params, scoring = run_experiment(full_set, test_set, run_id, feat_index, False, best_params, TEST_SET_NAME)
+        evaluate_test_sets(RESULTS_FILE, run_id, params, scoring, TEST_SET_NAME, TEST_DATA_PATH)
 
 
 def calculate_baseline(data_set, baseline_label, baseline_name, results_file, set_name=SET_NAME, data_path=DATA_PATH):
@@ -264,7 +270,7 @@ def evaluate_test_sets(results_file, run_id, best_params, scoring, set_name=SET_
 
     result_line = [run_id, time_string, best_params, scoring]
 
-    dev_eval = evaluate(data_path, predictions_path(run_id), results_file, run_id, set_name, data_path)
+    dev_eval = evaluate(data_path, predictions_path(run_id, set_name), results_file, run_id, set_name, data_path)
 
     result_line.extend(dev_eval)
 
