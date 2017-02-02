@@ -21,10 +21,13 @@ import FeatureSets
 # We do not want to always have the timestamp, we will clear the predictions file every time instead
 # This way we will not produce a huge amount of unused files and will always have the latest version.
 timestamp = '' 
+time_string = time.strftime('%d-%m-%Y %H.%M.%S')
 EVALUATE_WITH_SCORE = True
 
 SET_NAME = 'dev+test'
+TEST_SET_NAME = 'dev+test' #'train1'
 DATA_PATH = "../../../data/input/input-"+SET_NAME+".xml"
+TEST_DATA_PATH = "../../../data/input/input-"+TEST_SET_NAME+".xml"
 
 SCORE_PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-map.tsv")
 PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-$time.tsv")
@@ -36,26 +39,30 @@ CROSS_VALIDATION = True
 SPLIT_SETS_SIZE = 0
 
 
-def predictions_path(run_id):
-    return PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=run_id[:50], time=timestamp)
+def predictions_path(run_id, set_name=SET_NAME):
+    return PREDICTIONS_PATH.substitute(set=set_name, run_id=run_id[:50], time=timestamp)
 
-def score_predictions_path(run_id):
-    return SCORE_PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=run_id[:50])
+def score_predictions_path(run_id, set_name=SET_NAME):
+    return SCORE_PREDICTIONS_PATH.substitute(set=set_name, run_id=run_id[:50])
 
 def run(run_id, feat_index=''):
-    if EVALUATE_WITH_SCORE:
-        # clear the predictions file to overwrite it with the latest result
-        if os.path.exists(score_predictions_path(run_id)):
-            os.remove(score_predictions_path(run_id))
-    if os.path.exists(predictions_path(run_id)):
-            os.remove(predictions_path(run_id))
+    clear_prediction_files(run_id)
     if SPLIT_SETS_SIZE >= 0:
         run_split_sets(run_id, SPLIT_SETS_SIZE, feat_index)
     else:
         run_leave_one_out(run_id, feat_index)
     
-
-
+def clear_prediction_files(run_id):
+    if EVALUATE_WITH_SCORE:
+        # clear the predictions file to overwrite it with the latest result
+        if os.path.exists(score_predictions_path(run_id)):
+            os.remove(score_predictions_path(run_id))
+        if os.path.exists(score_predictions_path(run_id, TEST_SET_NAME)):
+            os.remove(score_predictions_path(run_id, TEST_SET_NAME))
+    if os.path.exists(predictions_path(run_id)):
+        os.remove(predictions_path(run_id))
+    if os.path.exists(predictions_path(run_id, TEST_SET_NAME)):
+        os.remove(predictions_path(run_id, TEST_SET_NAME))
 
 def run_leave_one_out(run_id, feat_index=''):
     print('--RUN_ID: ', run_id)
@@ -98,6 +105,11 @@ def run_split_sets(run_id, splits, feat_index=''):
     for i in range(0,len(set_parts)):
         full_set.extend(set_parts[i])
 
+    test_set = comment_utils.read_comments(TEST_DATA_PATH)
+
+    # for comment in test_set:
+    #     print(comment.comment_id, comment.label)
+
     if not os.path.exists(RESULTS_FILE):
         # If the results file does not exist - calcualte the baselines
         write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'MAP', 'Predictions', '', ''], RESULTS_FILE)
@@ -108,43 +120,61 @@ def run_split_sets(run_id, splits, feat_index=''):
             calculate_baseline_with_score(full_set, 'baseline-default-comment-order', RESULTS_FILE)
             calculate_baseline_with_score_oracle(full_set, 'baseline-oracle', RESULTS_FILE)
 
+        # calculate baselines for test set
+        calculate_baseline(test_set, 0, 'all-negative', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+        calculate_baseline(test_set, 1, 'all-positive', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+        if EVALUATE_WITH_SCORE:
+            # If the results file does not exist - calcualte the baselines
+            calculate_baseline_with_score(test_set, 'baseline-default-comment-order', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+            calculate_baseline_with_score_oracle(test_set, 'baseline-oracle', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+
     best_params, scoring = run_experiment(full_set, full_set, run_id, feat_index, True)
 
     for i in range(0,len(set_parts)):
         print('running experiments for split', i)
         train_set = list(full_set)
-        test_set = set_parts[i]
-        for c in test_set:
+        dev_set = set_parts[i]
+        for c in dev_set:
             train_set.remove(c)
-        params, scoring = run_experiment(train_set, test_set, run_id, feat_index, False, best_params)
+        params, scoring = run_experiment(train_set, dev_set, run_id, feat_index, False, best_params)
 
     evaluate_test_sets(RESULTS_FILE, run_id, params, scoring)
 
+    # predict and evaluate the test set    
+    params, scoring = run_experiment(full_set, test_set, run_id, feat_index, False, best_params, TEST_SET_NAME)
+    evaluate_test_sets(RESULTS_FILE, run_id, params, scoring, TEST_SET_NAME, TEST_DATA_PATH)
 
-def calculate_baseline(data_set, baseline_label, baseline_name, results_file):
-    print('calculating baseline:', baseline_name)
-    baseline_prediction_file = PREDICTIONS_PATH.substitute(set=SET_NAME, run_id=baseline_name, time=timestamp)
+
+def calculate_baseline(data_set, baseline_label, baseline_name, results_file, set_name=SET_NAME, data_path=DATA_PATH):
+    print('calculating baseline:', baseline_name, set_name)
+    baseline_prediction_file = PREDICTIONS_PATH.substitute(set=set_name, run_id=baseline_name, time=timestamp)
+    if os.path.exists(baseline_prediction_file):
+        os.remove(baseline_prediction_file)
     for comment in data_set:        
         write_to_csv_file([comment.comment_id, baseline_label], baseline_prediction_file)
-    baseline_eval = evaluate(DATA_PATH, baseline_prediction_file, results_file, baseline_name, SET_NAME)
-    result_line = [baseline_name, timestamp, 'n/a', 'n/a']
+    baseline_eval = evaluate(data_path, baseline_prediction_file, results_file, baseline_name, set_name, data_path)
+    result_line = [baseline_name, time_string, 'n/a', 'n/a']
     result_line.extend(baseline_eval)
     write_to_csv_file(result_line, results_file)
 
-def calculate_baseline_with_score(data_set, baseline_name, results_file):
-    print('calculating baseline:', baseline_name)
-    baseline_prediction_file = score_predictions_path(baseline_name)
-    for comment in data_set:        
+def calculate_baseline_with_score(data_set, baseline_name, results_file, set_name=SET_NAME, data_path=DATA_PATH):
+    print('calculating baseline:', baseline_name, set_name)
+    baseline_prediction_file = score_predictions_path(baseline_name, set_name)
+    if os.path.exists(baseline_prediction_file):
+        os.remove(baseline_prediction_file)
+    for comment in data_set:
         write_to_csv_file([comment.comment_id, 1/cid_to_int_extracted(comment.comment_id)], baseline_prediction_file)
-    baseline_eval = evaluate(DATA_PATH, baseline_prediction_file, results_file, baseline_name, SET_NAME)
-    result_line = [baseline_name, timestamp, 'n/a', 'n/a']
+    baseline_eval = evaluate(data_path, baseline_prediction_file, results_file, baseline_name, set_name, data_path)
+    result_line = [baseline_name, time_string, 'n/a', 'n/a']
     result_line.extend(baseline_eval)
     write_to_csv_file(result_line, results_file)
 
-def calculate_baseline_with_score_oracle(data_set, baseline_name, results_file):
-    print('calculating baseline:', baseline_name)
-    baseline_prediction_file = score_predictions_path(baseline_name)
-    for comment in data_set:        
+def calculate_baseline_with_score_oracle(data_set, baseline_name, results_file, set_name=SET_NAME, data_path=DATA_PATH):
+    print('calculating baseline:', baseline_name, set_name)
+    baseline_prediction_file = score_predictions_path(baseline_name, set_name)
+    if os.path.exists(baseline_prediction_file):
+        os.remove(baseline_prediction_file)
+    for comment in data_set:
         #write_to_csv_file([comment.comment_id, comment.label], baseline_prediction_file)
         score = 0
         if comment.label == 1.0:
@@ -153,8 +183,8 @@ def calculate_baseline_with_score_oracle(data_set, baseline_name, results_file):
             score = 0.001*1/cid_to_int_extracted(comment.comment_id)
         #print('===SCORE===', score)
         write_to_csv_file([comment.comment_id, score], baseline_prediction_file)
-    baseline_eval = evaluate(DATA_PATH, baseline_prediction_file, results_file, baseline_name, SET_NAME)
-    result_line = [baseline_name, timestamp, 'n/a', 'n/a']
+    baseline_eval = evaluate(data_path, baseline_prediction_file, results_file, baseline_name, set_name, data_path)
+    result_line = [baseline_name, time_string, 'n/a', 'n/a']
     result_line.extend(baseline_eval)
     write_to_csv_file(result_line, results_file)
 
@@ -167,10 +197,11 @@ def ensure_directory_exists(f):
     if not os.path.exists(f):
         os.makedirs(f)   
 
-def run_experiment(train_data, dev_data, run_id, feat_index='', full_set=False, params=None):
+def run_experiment(train_data, dev_data, run_id, feat_index='', full_set=False, params=None, set_name=SET_NAME):
     # Read the features
     train_features, train_labels = read_features(train_data, SET_NAME, feat_index)
-    dev_features, dev_labels = read_features(dev_data, SET_NAME, feat_index)
+    dev_features, dev_labels = read_features(dev_data, set_name, feat_index)
+    #test_features, test_labels = read_features(test_data, TEST_SET_NAME, feat_index)
 
     # Scale the features
     min_max_scaler = MinMaxScaler()
@@ -197,9 +228,9 @@ def run_experiment(train_data, dev_data, run_id, feat_index='', full_set=False, 
                 comment.predicted_score = dev_predicted_scores[i][1]
 
         # Write the predicted labels to file
-        write_predictions_to_file(dev_data, predictions_path(run_id))
+        write_predictions_to_file(dev_data, predictions_path(run_id, set_name))
         if EVALUATE_WITH_SCORE:
-            write_score_predictions_to_file(dev_data, score_predictions_path(run_id))
+            write_score_predictions_to_file(dev_data, score_predictions_path(run_id, set_name))
 
     # evaluate and save the result
     return best_params, scoring
@@ -212,14 +243,14 @@ def write_score_predictions_to_file(data, file):
     for comment in data:
         write_to_csv_file([comment.comment_id, comment.predicted_score], file)
 
-def evaluate_test_sets(results_file, run_id, best_params, scoring):
+def evaluate_test_sets(results_file, run_id, best_params, scoring, set_name=SET_NAME, data_path=DATA_PATH):
     # write header:
     if not os.path.exists(results_file):
         write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'MAP', 'Predictions', '', ''], results_file)
 
-    result_line = [run_id, timestamp, best_params, scoring]
+    result_line = [run_id, time_string, best_params, scoring]
 
-    dev_eval = evaluate(DATA_PATH, predictions_path(run_id), results_file, run_id, SET_NAME)
+    dev_eval = evaluate(data_path, predictions_path(run_id), results_file, run_id, set_name, data_path)
 
     result_line.extend(dev_eval)
 
@@ -276,7 +307,7 @@ def calculate_map(p, gold_labels_file, score_predictions_file):
     return map_value
 
 
-def evaluate(gold_labels_file, prediction_file, results_file, run_id, set_name):
+def evaluate(gold_labels_file, prediction_file, results_file, run_id, set_name, data_path=DATA_PATH):
     gold_labels = comment_utils.read_comment_labels_from_xml(gold_labels_file)
     predicted_labels = comment_utils.read_comment_labels_from_tsv(prediction_file)
 
@@ -315,13 +346,15 @@ def evaluate(gold_labels_file, prediction_file, results_file, run_id, set_name):
     f1 = 2*true_positives/(2*true_positives + false_negatives + false_positives)
 
     map_value = 'n/a'
-    if EVALUATE_WITH_SCORE and os.path.exists(score_predictions_path(run_id)):
-        map_value = calculate_map(20, DATA_PATH, score_predictions_path(run_id))        
+    if EVALUATE_WITH_SCORE:
+        if os.path.exists(score_predictions_path(run_id, set_name)):
+            path = score_predictions_path(run_id, set_name)
+            map_value = calculate_map(20, data_path, path)
 
     return [set_name, accuracy, precision, recall, f1, map_value, confusion_matrix, confusion_matrix2, confusion_matrix3]
 
 def read_features_from_index(data, set_name, feat_index):
-    set_name = 'dev+test'
+    #set_name = 'dev+test'
     print('---Reading features from index for ' + set_name, feat_index) 
     X = []
     y = []
@@ -442,4 +475,6 @@ def write_to_csv_file(array, file_path):
 
 #pred_file = "../../../data/predictions/predicted-labels-dev+test-baseline-oracle-map.tsv"
 # pred_file = "../../../data/predictions/predicted-labels-dev+test-baseline-default-comment-order-map.tsv"
+# pred_file = "../../../data/predictions/predicted-labels-dev+test-all-negative-.tsv"
+# pred_file = "../../../data/predictions/predicted-labels-dev+test-all-positive-.tsv"
 # print(calculate_map(10, DATA_PATH, pred_file))
