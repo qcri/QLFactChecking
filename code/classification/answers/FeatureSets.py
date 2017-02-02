@@ -251,6 +251,14 @@ def read_feature_set(set_name, feat_index):
         features_map = Features.add_features(features_map, Features.features_IR_google_webpages_splited(set_name))
         features_map = Features.add_features(features_map, Features.features_IR_google_snippets_splited(set_name))
 
+    if feat_index == 'IRF_Best_combination':
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qataronly_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_splited(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_snippets_qataronly(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_qataronly(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_snippets_qataronly(set_name))
+        features_map = Features.add_features(features_map, Features.features_IR_google_webpages_qataronly(set_name))
 
     if feat_index == 'all':
         features_map = Features.add_features(features_map, Features.features_CATEGORIES(set_name))
