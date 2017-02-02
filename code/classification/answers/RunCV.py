@@ -117,18 +117,18 @@ def run_split_sets(run_id, splits, feat_index=''):
         calculate_baseline(full_set, 1, 'classification-baseline-all-positive', RESULTS_FILE)
         if EVALUATE_WITH_SCORE:
             # If the results file does not exist - calcualte the baselines
-            calculate_baseline_with_score(full_set, 'scoring-baseline-default-comment-order', RESULTS_FILE)
-            calculate_baseline_with_score_oracle(full_set, 'scoring-baseline-oracle', RESULTS_FILE)
-            calculate_baseline_with_score_random(full_set, 'scoring-baseline-random', RESULTS_FILE)
+            calculate_baseline_with_score(full_set, 'ranking-baseline-default-comment-order', RESULTS_FILE)
+            calculate_baseline_with_score_oracle(full_set, 'ranking-baseline-oracle', RESULTS_FILE)
+            calculate_baseline_with_score_random(full_set, 'ranking-baseline-random', RESULTS_FILE)
 
         # calculate baselines for test set
         calculate_baseline(test_set, 0, 'classification-baseline-all-negative', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
         calculate_baseline(test_set, 1, 'classification-baseline-all-positive', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
         if EVALUATE_WITH_SCORE:
             # If the results file does not exist - calcualte the baselines
-            calculate_baseline_with_score(test_set, 'scoring-baseline-default-comment-order', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
-            calculate_baseline_with_score_oracle(test_set, 'scoring-baseline-oracle', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
-            calculate_baseline_with_score_random(test_set, 'scoring-baseline-random', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+            calculate_baseline_with_score(test_set, 'ranking-baseline-default-comment-order', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+            calculate_baseline_with_score_oracle(test_set, 'ranking-baseline-oracle', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+            calculate_baseline_with_score_random(test_set, 'ranking-baseline-random', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
 
     best_params, scoring = run_experiment(full_set, full_set, run_id, feat_index, True)
 
