@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(0, '../../data/features/')
 
-import csv, os
+import csv, os, random
 import string
 import time
 from sklearn.preprocessing import Normalizer
@@ -113,20 +113,22 @@ def run_split_sets(run_id, splits, feat_index=''):
     if not os.path.exists(RESULTS_FILE):
         # If the results file does not exist - calcualte the baselines
         write_to_csv_file(['RUN-ID', 'Time', 'Params', 'Optimized for', 'SET', 'Accuracy', 'Precision', 'Recall', 'F1', 'MAP', 'Predictions', '', ''], RESULTS_FILE)
-        calculate_baseline(full_set, 0, 'all-negative', RESULTS_FILE)
-        calculate_baseline(full_set, 1, 'all-positive', RESULTS_FILE)
+        calculate_baseline(full_set, 0, 'classification-baseline-all-negative', RESULTS_FILE)
+        calculate_baseline(full_set, 1, 'classification-baseline-all-positive', RESULTS_FILE)
         if EVALUATE_WITH_SCORE:
             # If the results file does not exist - calcualte the baselines
-            calculate_baseline_with_score(full_set, 'baseline-default-comment-order', RESULTS_FILE)
-            calculate_baseline_with_score_oracle(full_set, 'baseline-oracle', RESULTS_FILE)
+            calculate_baseline_with_score(full_set, 'scoring-baseline-default-comment-order', RESULTS_FILE)
+            calculate_baseline_with_score_oracle(full_set, 'scoring-baseline-oracle', RESULTS_FILE)
+            calculate_baseline_with_score_random(full_set, 'scoring-baseline-random', RESULTS_FILE)
 
         # calculate baselines for test set
-        calculate_baseline(test_set, 0, 'all-negative', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
-        calculate_baseline(test_set, 1, 'all-positive', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+        calculate_baseline(test_set, 0, 'classification-baseline-all-negative', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+        calculate_baseline(test_set, 1, 'classification-baseline-all-positive', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
         if EVALUATE_WITH_SCORE:
             # If the results file does not exist - calcualte the baselines
-            calculate_baseline_with_score(test_set, 'baseline-default-comment-order', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
-            calculate_baseline_with_score_oracle(test_set, 'baseline-oracle', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+            calculate_baseline_with_score(test_set, 'scoring-baseline-default-comment-order', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+            calculate_baseline_with_score_oracle(test_set, 'scoring-baseline-oracle', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
+            calculate_baseline_with_score_random(test_set, 'scoring-baseline-random', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
 
     best_params, scoring = run_experiment(full_set, full_set, run_id, feat_index, True)
 
@@ -164,6 +166,18 @@ def calculate_baseline_with_score(data_set, baseline_name, results_file, set_nam
         os.remove(baseline_prediction_file)
     for comment in data_set:
         write_to_csv_file([comment.comment_id, 1/cid_to_int_extracted(comment.comment_id)], baseline_prediction_file)
+    baseline_eval = evaluate(data_path, baseline_prediction_file, results_file, baseline_name, set_name, data_path)
+    result_line = [baseline_name, time_string, 'n/a', 'n/a']
+    result_line.extend(baseline_eval)
+    write_to_csv_file(result_line, results_file)
+
+def calculate_baseline_with_score_random(data_set, baseline_name, results_file, set_name=SET_NAME, data_path=DATA_PATH):
+    print('calculating baseline:', baseline_name, set_name)
+    baseline_prediction_file = score_predictions_path(baseline_name, set_name)
+    if os.path.exists(baseline_prediction_file):
+        os.remove(baseline_prediction_file)
+    for comment in data_set:
+        write_to_csv_file([comment.comment_id, random.random()], baseline_prediction_file)
     baseline_eval = evaluate(data_path, baseline_prediction_file, results_file, baseline_name, set_name, data_path)
     result_line = [baseline_name, time_string, 'n/a', 'n/a']
     result_line.extend(baseline_eval)
