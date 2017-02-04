@@ -68,13 +68,15 @@ def main(prefix):
             if os.path.exists(RunCV.predictions_path(run_id)):
                 os.remove(RunCV.predictions_path(run_id))
 
-            combine_system_predictions(groups_names, run_id, SET_NAME)
-            # combine_system_predictions(groups_names, run_id, TEST_SET_NAME)
+            combine_system_predictions(groups_names, run_id, SET_NAME, RunCV.DATA_PATH)
+            if RunCV.EVAL_ON_TEST_SET:
+                # RunCV.evaluate_test_sets(RESULTS_FILE, run_id, 'na', 'na', RunCV.TEST_SET_NAME, RunCV.TEST_DATA_PATH)
+                combine_system_predictions(groups_names, run_id, RunCV.TEST_SET_NAME, RunCV.TEST_DATA_PATH)
 
     # combine_system_predictions(['IRF_Bing_webpage_qataronly_splitted-incl', 'LINGF_All-incl'], 'TOP_IRF_LINGF', SET_NAME)
 
 
-def combine_system_predictions(groups, run_id, set_name):
+def combine_system_predictions(groups, run_id, set_name, data_path):
     print('combining:', groups)
     gold_labels_file = 'asdf'    
     comments = {}
@@ -100,7 +102,7 @@ def combine_system_predictions(groups, run_id, set_name):
                 comment = comments[comment_id]                
                 # comment.label += int(label)
                 comment.label.append(label)
-                # comment.predicted_score += score_predictions_map[comment_id]*(1/counter)
+                # comment.predicted_score += score_predictions_map[comment_id]
                 comment.predicted_score += ranking_predictions_map[comment_id]               
                 
                 # if comment.comment_id.startswith('Q380_R23'):
@@ -148,12 +150,13 @@ def combine_system_predictions(groups, run_id, set_name):
 
             # print('using:', comment.comment_id, comment.predicted_label, comment.predicted_score)
 
-    # 3. Write the predicitons file
+    # 3. Write the predictions file
     RunCV.write_predictions_to_file(comments.values(), RunCV.predictions_path(run_id, set_name))
     RunCV.write_score_predictions_to_file(comments.values(), RunCV.ranking_predictions_path(run_id, set_name))
 
     # 4. Evaluate the results
-    RunCV.evaluate_test_sets(RESULTS_FILE, run_id, 'na', 'na', set_name)
+    RunCV.evaluate_test_sets(RESULTS_FILE, run_id, 'na', 'na', set_name, data_path)
+    
 
 
 
