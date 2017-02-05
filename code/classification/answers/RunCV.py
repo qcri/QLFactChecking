@@ -312,7 +312,8 @@ def calculate_map(p, gold_labels_file, score_predictions_file):
         scores[qid][predicted_score+add_ranking] = gold_label
 
     for query, score_label_mapping in scores.items():
-        if 1 in score_label_mapping.values():
+        # print(score_label_mapping.values())
+        if 1 in score_label_mapping.values() and sum(score_label_mapping.values()) < len(score_label_mapping.values()):
             counter += 1
             # print(query, score_label_mapping)
             sorted_scores = sorted(score_label_mapping.keys(), reverse=True)
@@ -330,6 +331,8 @@ def calculate_map(p, gold_labels_file, score_predictions_file):
             # print(count_positive_labels, i+1)
             map_value += average_precision / count_positive_labels
             # print('ap, limit, map=', average_precision, limit, map_value)
+        # else:
+        #     print('exclude', score_label_mapping )
 
     # print(map_value, len(scores.items()), counter)
 

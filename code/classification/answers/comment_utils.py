@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-import csv, random
+import csv, random, os
 from comment import Comment
 import operator
 
@@ -260,6 +260,7 @@ def split_set_in_parts_leave_1_question_out(xml_file):
 
 def convert_scores_to_ranking_file_and_return_ranking_map(scores_file_path, ranking_file_path):
     scores_map = read_comment_scores_from_tsv(scores_file_path)
+    
     # print(scores_map)
     query_scores_map = {}
     # print(scores_map.items())
@@ -280,7 +281,12 @@ def convert_scores_to_ranking_file_and_return_ranking_map(scores_file_path, rank
             ranking_map[sorted_score[0]] = 1/(i+1)
 
     # write the new ranking in the file
-    sorted_ranking_map = sorted(comment_scores.items(), key=operator.itemgetter(0))
+    sorted_ranking_map = sorted(ranking_map.items(), key=operator.itemgetter(0))
+
+    # clear the predicitons file
+    if os.path.exists(ranking_file_path):
+        os.remove(ranking_file_path)
+    
     for comment_id, ranking in sorted_ranking_map:
         write_to_csv_file([comment_id, ranking], ranking_file_path)
 
