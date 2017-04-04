@@ -191,8 +191,14 @@ def features_IR_bing_webpages_splited(set_name):
     return read_features(set_name, "ir.bing_webpages_splited")
 
 #IR features
-def features_IR_google_webpages_splited(set_name):
-    return read_features(set_name, "ir.google_webpages_splited")
+#def features_IR_google_webpages_splited(set_name):
+#    return read_features(set_name, "ir.google_webpages_splited")
+#IR features
+def features_IR_QL_only(set_name):
+    return read_features(set_name, "ir.IR_QL_Only_Google_snippets")
+
+def features_IR_External(set_name):
+    return read_features(set_name, "ir.IR_External_google_snippets")
 
 def read_features(set_name, suffix):
     path = ''
