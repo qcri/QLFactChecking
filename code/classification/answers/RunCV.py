@@ -29,9 +29,10 @@ TEST_SET_NAME = 'train1'
 DATA_PATH = "../../../data/input/input-"+SET_NAME+".xml"
 TEST_DATA_PATH = "../../../data/input/input-"+TEST_SET_NAME+".xml"
 
-EVAL_ON_TEST_SET = True
+EVAL_ON_TEST_SET = False
 
-SCORE_PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-map.tsv")
+SCORE_PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-scores.tsv")
+RANKING_PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-ranking.tsv")
 PREDICTIONS_PATH = string.Template("../../../data/predictions/predicted-labels-$set-$run_id-$time.tsv")
 RESULTS_FILE = "../../../data/results/results-answers-cross-validation-"+SET_NAME+".tsv"
 CROSS_VALIDATION = True
@@ -47,6 +48,9 @@ def predictions_path(run_id, set_name=SET_NAME):
 def score_predictions_path(run_id, set_name=SET_NAME):
     return SCORE_PREDICTIONS_PATH.substitute(set=set_name, run_id=run_id[:50])
 
+def ranking_predictions_path(run_id, set_name=SET_NAME):
+    return RANKING_PREDICTIONS_PATH.substitute(set=set_name, run_id=run_id[:50])
+
 def run(run_id, feat_index=''):
     clear_prediction_files(run_id)
     if SPLIT_SETS_SIZE >= 0:
@@ -59,9 +63,13 @@ def clear_prediction_files(run_id):
         # clear the predictions file to overwrite it with the latest result
         if os.path.exists(score_predictions_path(run_id)):
             os.remove(score_predictions_path(run_id))
+        if os.path.exists(ranking_predictions_path(run_id)):
+            os.remove(ranking_predictions_path(run_id))
         if EVAL_ON_TEST_SET:
             if os.path.exists(score_predictions_path(run_id, TEST_SET_NAME)):
                 os.remove(score_predictions_path(run_id, TEST_SET_NAME))
+            if os.path.exists(ranking_predictions_path(run_id, TEST_SET_NAME)):
+                os.remove(ranking_predictions_path(run_id, TEST_SET_NAME))
     if os.path.exists(predictions_path(run_id)):
         os.remove(predictions_path(run_id))
     if EVAL_ON_TEST_SET:
@@ -245,12 +253,17 @@ def run_experiment(train_data, dev_data, run_id, feat_index='', full_set=False, 
         for (i,comment) in enumerate(dev_data):
             comment.predicted_label = dev_predicted[i]
             if EVALUATE_WITH_SCORE:
-                comment.predicted_score = dev_predicted_scores[i][1]
+                add_ranking = 1/cid_to_int_extracted(comment.comment_id)*0.0000000001
+                comment.predicted_score = dev_predicted_scores[i][1]+add_ranking
+                
+
 
         # Write the predicted labels to file
         write_predictions_to_file(dev_data, predictions_path(run_id, set_name))
         if EVALUATE_WITH_SCORE:
             write_score_predictions_to_file(dev_data, score_predictions_path(run_id, set_name))
+            # comment_utils.convert_scores_to_ranking_file_and_return_ranking_map(score_predictions_path(run_id, set_name), ranking_predictions_path(run_id, set_name))
+            
 
     # evaluate and save the result
     return best_params, scoring
@@ -293,12 +306,14 @@ def calculate_map(p, gold_labels_file, score_predictions_file):
     for comment_id, predicted_score in predicted_scores.items():
         qid = qid_from_cid(comment_id)
         gold_label = gold_labels[comment_id]
+        add_ranking = 1/cid_to_int_extracted(comment_id)*0.0000000001
         if not qid in scores.keys():
             scores[qid] = {}
-        scores[qid][predicted_score] = gold_label
+        scores[qid][predicted_score+add_ranking] = gold_label
 
     for query, score_label_mapping in scores.items():
-        if 1 in score_label_mapping.values():
+        # print(score_label_mapping.values())
+        if 1 in score_label_mapping.values() and sum(score_label_mapping.values()) < len(score_label_mapping.values()):
             counter += 1
             # print(query, score_label_mapping)
             sorted_scores = sorted(score_label_mapping.keys(), reverse=True)
@@ -316,6 +331,8 @@ def calculate_map(p, gold_labels_file, score_predictions_file):
             # print(count_positive_labels, i+1)
             map_value += average_precision / count_positive_labels
             # print('ap, limit, map=', average_precision, limit, map_value)
+        # else:
+        #     print('exclude', score_label_mapping )
 
     # print(map_value, len(scores.items()), counter)
 
@@ -367,8 +384,15 @@ def evaluate(gold_labels_file, prediction_file, results_file, run_id, set_name, 
 
     map_value = 'n/a'
     if EVALUATE_WITH_SCORE:
-        if os.path.exists(score_predictions_path(run_id, set_name)):
+        # first try to calculate the map on ranking
+        if os.path.exists(ranking_predictions_path(run_id, set_name)):
+            path = ranking_predictions_path(run_id, set_name)
+            map_value = calculate_map(20, data_path, path)
+        elif os.path.exists(score_predictions_path(run_id, set_name)):
             path = score_predictions_path(run_id, set_name)
+            map_value = calculate_map(20, data_path, path)
+        elif os.path.exists(predictions_path(run_id, set_name)):
+            path = predictions_path(run_id, set_name)
             map_value = calculate_map(20, data_path, path)
 
     return [set_name, accuracy, precision, recall, f1, map_value, confusion_matrix, confusion_matrix2, confusion_matrix3]
@@ -493,8 +517,8 @@ def write_to_csv_file(array, file_path):
 #main()
 
 
-#pred_file = "../../../data/predictions/predicted-labels-dev+test-baseline-oracle-map.tsv"
-# pred_file = "../../../data/predictions/predicted-labels-dev+test-baseline-default-comment-order-map.tsv"
-# pred_file = "../../../data/predictions/predicted-labels-dev+test-all-negative-.tsv"
-# pred_file = "../../../data/predictions/predicted-labels-dev+test-all-positive-.tsv"
+# pred_file = "../../../data/predictions/predicted-labels-dev+test-ranking-baseline-oracle-scores.tsv"
+# pred_file = "../../../data/predictions/predicted-labels-dev+test-ranking-baseline-default-comment-order-scores.tsv"
+# pred_file = "../../../data/predictions/predicted-labels-dev+test-classification-baseline-all-negative-.tsv"
+# pred_file = "../../../data/predictions/predicted-labels-dev+test-classification-baseline-all-positive-.tsv"
 # print(calculate_map(10, DATA_PATH, pred_file))

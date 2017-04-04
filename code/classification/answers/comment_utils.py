@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
-import csv, random
+import csv, random, os
 from comment import Comment
+import operator
 
 POSITIVE_LABELS = ['Factual - True']
 NEGATIVE_LABELS = ['Factual - False', 'Factual - Partially True', 'Factual - Conditionally True', 'NonFactual', 'Factual - Responder Unsure']
@@ -241,7 +242,7 @@ def split_set_in_parts_leave_1_question_out(xml_file):
                     label = get_label(comment_fact_label)
                     if label > -1:
                         # if any of the comments is in the labels, add it to the subset part
-                        comment.label = label                        
+                        comment.label = label
                         parts[counter].append(comment)
         
 
@@ -255,6 +256,52 @@ def split_set_in_parts_leave_1_question_out(xml_file):
 
     return parts
 
+
+
+def convert_scores_to_ranking_file_and_return_ranking_map(scores_file_path, ranking_file_path):
+    scores_map = read_comment_scores_from_tsv(scores_file_path)
+    
+    # print(scores_map)
+    query_scores_map = {}
+    # print(scores_map.items())
+    for comment_id, score in scores_map.items():
+        qid = qid_from_cid(comment_id)
+        if not qid in query_scores_map.keys():        
+            query_scores_map[qid] = {}
+        query_scores_map[qid][comment_id] = score
+
+    ranking_map = {}
+
+    for qid, comment_scores in query_scores_map.items():
+        # sort the comments for each question according to the scores
+        sorted_scores = sorted(comment_scores.items(), key=operator.itemgetter(1), reverse=True)
+
+        # put the ranking for each comment
+        for i, sorted_score in enumerate(sorted_scores):
+            ranking_map[sorted_score[0]] = 1/(i+1)
+
+    # write the new ranking in the file
+    sorted_ranking_map = sorted(ranking_map.items(), key=operator.itemgetter(0))
+
+    # clear the predicitons file
+    if os.path.exists(ranking_file_path):
+        os.remove(ranking_file_path)
+    
+    for comment_id, ranking in sorted_ranking_map:
+        write_to_csv_file([comment_id, ranking], ranking_file_path)
+
+    return ranking_map
+
+    # sorted_x = sorted(x.items(), key=operator.itemgetter(1))
+
+
+def write_to_csv_file(array, file_path):
+    with open(file_path, 'a+', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile, delimiter='\t', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        csv_writer.writerow(array)
+
+def qid_from_cid(cid):
+    return cid[cid.find('Q'):cid.find('_C')]
 
 # xml = '../../../data/input/input-dev+test.xml'
 # split_set_in_parts_leave_1_question_out(xml)
