@@ -81,8 +81,8 @@ RUNS = [
     #["IRF_Google_snippets_splitted-incl", "IRF_Google_snippets_splitted-incl"],
     #["IRF_ALL_snippets_splitted-incl", "IRF_ALL_snippets_splitted-incl"],
     #["IRF_Bing_webpage_splitted-incl", "IRF_Bing_webpage_splitted-incl"],
-    #["QL_only", "IRF_QL_only-incl"],
-    #["External", "IRF_External_google_snippets-incl"],
+    ["QL_only", "IRF_QL_only-incl"], #Results for snippets for QatarLiving.com
+    ["External", "IRF_External_google_snippets-incl"], #Results from the web (without QL), but with minimum query relaxation
     ["QL_only_reputed", "IRF_QL_only_reputed-incl"],
     ["QL_only_split", "IRF_QL_only_split-incl"],
     #["IRF_ALL_webpages_splitted-incl", "IRF_ALL_webpages_splitted-incl"],
