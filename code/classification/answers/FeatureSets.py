@@ -11,6 +11,11 @@ def read_feature_sets(set_name, feat_indeces):
 def read_feature_set(set_name, feat_index):
     features_map = {}
 
+    # Baseline_Castillo_2011
+    if feat_index == 'Baseline_Castillo_2011':
+        features_map = Features.add_features(features_map, Features.features_CREDIBILITY(set_name))
+        features_map = Features.add_features(features_map, Features.features_SENTIMENT(set_name))
+
     if feat_index == 'CATEGORIES-incl':
         features_map = Features.add_features(features_map, Features.features_CATEGORIES(set_name))
     if feat_index == 'QUALITY-incl':
@@ -104,6 +109,10 @@ def read_feature_set(set_name, feat_index):
     if feat_index == 'ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl':
         features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH(set_name))
         features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN(set_name))
+    #article supports
+    if feat_index == 'ARTICLES_SUPPORTS_QUERY_LEVENSHTEIN-incl':
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_QUERY(set_name))
+        features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_QUERY_LEVENSHTEIN(set_name))
     #article supports
     if feat_index == 'ARTICLES_SUPPORTS_ENTIREC-incl':
         features_map = Features.add_features(features_map, Features.features_ARTICLES_SUPPORTS_ENTIREC(set_name))
