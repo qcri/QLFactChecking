@@ -41,6 +41,14 @@ def features_COSINES(set_name):
 
 
 #article supports
+def features_ARTICLES_SUPPORTS_QUERY_LEVENSHTEIN(set_name):
+    return read_features(set_name, "text_only.tc.articles-supports-QUERY-levenshtein")
+
+#article supports
+def features_ARTICLES_SUPPORTS_QUERY(set_name):
+    return read_features(set_name, "text_only.tc.articles-supports-QUERY")
+
+#article supports
 def features_ARTICLES_SUPPORTS_BESTMATCH(set_name):
     return read_features(set_name, "text_only.tc.articles-supports-bestMatch")
 
