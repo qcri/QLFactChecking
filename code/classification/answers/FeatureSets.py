@@ -278,6 +278,12 @@ def read_feature_set(set_name, feat_index):
     if feat_index == 'IRF_QL_only_split-incl':
         features_map = Features.add_features(features_map, Features.features_IR_QL_split(set_name))
 
+    if feat_index == 'IRF_QL_only_withPages_reputed-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_QL_only_withPages_reputed(set_name))
+
+    if feat_index == 'IRF_QL_only_withPages_split-incl':
+        features_map = Features.add_features(features_map, Features.features_IR_QL_withPages_split(set_name))
+
 
     if feat_index == 'IRF_ALL_webpages_splitted-incl':
         features_map = Features.add_features(features_map, Features.features_IR_bing_webpages_splited(set_name))
