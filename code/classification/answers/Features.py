@@ -120,6 +120,10 @@ def features_LINGF_NEGATIONS(set_name):
 def features_LINGF_All(set_name):
     return read_features(set_name, "text_only.tc.linguisticFeatures-all-linguistic-features")
 
+#linguistic Features
+def features_LINGF_EXTENDED_MULTIWORDS(set_name):
+    return read_features(set_name, "text_only.tc.linguisticFeatures-multiWords-biases")
+
 #IR features
 def features_IR_Bing_snippets(set_name):
     return read_features(set_name, "ir.bing_snippets")

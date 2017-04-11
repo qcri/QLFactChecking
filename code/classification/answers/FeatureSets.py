@@ -101,6 +101,23 @@ def read_feature_set(set_name, feat_index):
         features_map = Features.add_features(features_map, Features.features_LINGF_POSITIVES(set_name))
         features_map = Features.add_features(features_map, Features.features_LINGF_MODALS(set_name))
         features_map = Features.add_features(features_map, Features.features_LINGF_NEGATIONS(set_name))
+    #linguistic Features
+    if feat_index == 'EXTENDED_LINGF_All-incl':
+        # features_map = Features.add_features(features_map, Features.features_LINGF_All(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_BIAS_LEX(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_HEDGES(set_name))
+        # features_map = Features.add_features(features_map, Features.features_LINGF_IMPLICATIVES(set_name))
+        # features_map = Features.add_features(features_map, Features.features_LINGF_ASSERTIVES(set_name))
+        # features_map = Features.add_features(features_map, Features.features_LINGF_FACTIVES(set_name))
+        # features_map = Features.add_features(features_map, Features.features_LINGF_REPORT_VERBS(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_STRONGSubj(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_WEAKSubj(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_NEGATIVES(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_POSITIVES(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_MODALS(set_name))
+        features_map = Features.add_features(features_map, Features.features_LINGF_NEGATIONS(set_name))
+        ###EXTENDED_LINGF_All-incl
+        features_map = Features.add_features(features_map, Features.features_LINGF_EXTENDED_MULTIWORDS(set_name))
 
     #article supports
     if feat_index == 'ARTICLES_SUPPORTS_BESTMATCH-incl':

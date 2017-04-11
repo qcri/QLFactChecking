@@ -1,14 +1,13 @@
 import RunCV
 
 RUNS = [
-    #some updates:
     #['ARTICLES_SUPPORTS_BESTMATCH-incl', 'ARTICLES_SUPPORTS_BESTMATCH-incl'], #article supports
     #['ARTICLES_SUPPORTS_ENTIREC-incl', 'ARTICLES_SUPPORTS_ENTIREC-incl'], #article supports
     #['ARTICLES_SUPPORTS_All-incl', 'ARTICLES_SUPPORTS_All-incl'], #article supports
 
-    ###Included
     # ['ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_BESTMATCH_LEVENSHTEIN-incl'], #article supports
-    #['ARTICLES_SUPPORTS_QUERY_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_QUERY_LEVENSHTEIN-incl'], #article supports
+    ###Included
+    ['ARTICLES_SUPPORTS_QUERY_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_QUERY_LEVENSHTEIN-incl'], #article supports
 
     #['ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_ENTIREC_LEVENSHTEIN-incl'], #article supports
     #['ARTICLES_SUPPORTS_All_LEVENSHTEIN-incl', 'ARTICLES_SUPPORTS_All_LEVENSHTEIN-incl'], #article supports
@@ -26,26 +25,29 @@ RUNS = [
     #['LINGF_MODALS-incl', 'LINGF_MODALS-incl'], #linguistic Features
     #['LINGF_NEGATIONS-incl', 'LINGF_NEGATIONS-incl'], #linguistic Features
     ###Included
-    #['LINGF_All-incl', 'LINGF_All-incl'], #linguistic Features
+    ['LINGF_All', 'LINGF_All-incl'], #linguistic Features
+    ['EXTENDED_LINGF_All-incl', 'EXTENDED_LINGF_All-incl'], #linguistic Features
 
     ###Included
-    #['Baseline_Castillo_2011', 'Baseline_Castillo_2011'],
+    ['Baseline_Castillo_2011', 'Baseline_Castillo_2011'],
+    ['Baseline_CREDIBILITY', 'CREDIBILITY-incl'],
+    ['Baseline_SENTIMENT', 'SENTIMENT-incl'],
 
     ###Included
-    #['CATEGORIES-incl', 'CATEGORIES-incl'],
-    #['QUALITY-incl', 'QUALITY-incl'],
-    # ['TROLLNESS-incl', 'TROLLNESS-incl'],
-    #['ACTIVITY-incl', 'ACTIVITY-incl'],
-    #baseline
+    ['CATEGORIES-incl', 'CATEGORIES-incl'],
+    ['QUALITY-incl', 'QUALITY-incl'],
+    ### ['TROLLNESS-incl', 'TROLLNESS-incl'],
+    ['ACTIVITY-incl', 'ACTIVITY-incl'],
+    ##baseline
     ###['CREDIBILITY-incl', 'CREDIBILITY-incl'],
-    #baseline
+    ##baseline
     ###['SENTIMENT-incl', 'SENTIMENT-incl'],
-    #['GOOGLE_VEC-incl', 'GOOGLE_VEC-incl'],
-    #['QL_VEC-incl', 'QL_VEC-incl'],
-    #['SYNTAX_VEC-incl', 'SYNTAX_VEC-incl'],
-    #['RANK_SAME_USER-incl', 'RANK_SAME_USER-incl'],
-    #['VEC_COSINES_THREAD-incl', 'VEC_COSINES_THREAD-incl'],
-    #['COSINES-incl', 'COSINES-incl'],
+    ['GOOGLE_VEC-incl', 'GOOGLE_VEC-incl'],
+    ['QL_VEC-incl', 'QL_VEC-incl'],
+    ['SYNTAX_VEC-incl', 'SYNTAX_VEC-incl'],
+    ['RANK_SAME_USER-incl', 'RANK_SAME_USER-incl'],
+    ['VEC_COSINES_THREAD-incl', 'VEC_COSINES_THREAD-incl'],
+    ['COSINES-incl', 'COSINES-incl'],
 
     # ['CATEGORIES-excl', 'CATEGORIES-excl'],
     # ['QUALITY-excl', 'QUALITY-excl'],
@@ -76,10 +78,8 @@ RUNS = [
     #["IRF_Bing_snippets_qataronly_splitted-incl", "IRF_Bing_snippets_qataronly_splitted-incl"],
     #["IRF_Google_snippets_qataronly_splitted-incl", "IRF_Google_snippets_qataronly_splitted-incl"],
     #["IRF_ALL_snippets_qataronly_splitted-incl", "IRF_ALL_snippets_qataronly_splitted-incl"],
-
     ###Included
-    # ["IRF_Bing_webpage_qataronly_splitted-incl", "IRF_Bing_webpage_qataronly_splitted-incl"],
-
+    ["IRF_Bing_webpage_qataronly_splitted-incl", "IRF_Bing_webpage_qataronly_splitted-incl"],
     #["IRF_Google_webpage_qataronly_splitted-incl", "IRF_Google_webpage_qataronly_splitted-incl"],
     #["IRF_ALL_webpages_qataronly_splitted-incl", "IRF_ALL_webpages_qataronly_splitted-incl"],
     #["IRF_ALL_Google_qataronly_splitted-incl", "IRF_ALL_Google_qataronly_splitted-incl"],
@@ -98,12 +98,13 @@ RUNS = [
     #["IRF_Google_snippets_splitted-incl", "IRF_Google_snippets_splitted-incl"],
     #["IRF_ALL_snippets_splitted-incl", "IRF_ALL_snippets_splitted-incl"],
     #["IRF_Bing_webpage_splitted-incl", "IRF_Bing_webpage_splitted-incl"],
+
     ###Included
-    #["QL_only", "IRF_QL_only-incl"], #Results for snippets for QatarLiving.com
-    #["External", "IRF_External_google_snippets-incl"], #Results from the web (without QL), but with minimum query relaxation
-    #["IRF_QL_only_reputed-incl", "IRF_QL_only_reputed-incl"],
-    #["IRF_QL_only_split-incl", "IRF_QL_only_split-incl"],
-    ["IRF_QL_only_withPages_reputed-incl", "IRF_QL_only_withPages_reputed-incl"],
+    ["IRF_QL_only", "IRF_QL_only-incl"], #Results for snippets for QatarLiving.com
+    ["IRF_External_google_snippets-incl", "IRF_External_google_snippets-incl"], #Results from the web (without QL), but with minimum query relaxation
+    ["IRF_QL_only_reputed", "IRF_QL_only_reputed-incl"],
+    ["IRF_QL_only_split", "IRF_QL_only_split-incl"],
+    ["IRF_QL_only_withPages_reputed", "IRF_QL_only_withPages_reputed-incl"],
     ["IRF_QL_only_withPages_split-incl", "IRF_QL_only_withPages_split-incl"],
     
     #["IRF_ALL_webpages_splitted-incl", "IRF_ALL_webpages_splitted-incl"],
