@@ -12,6 +12,7 @@ import numpy as np
 # This is the index of the column of the result we are comparing in the results file.
 ACCURACY_INDEX = 5
 MAP_INDEX = 9
+F1_INDEX = 8
 
 # Value above which the postiive or negative label is 
 # CLASSIFICATION_THRESHOLD = 0.55
@@ -24,6 +25,10 @@ TEMP_RUN_PREFIX = 'TEMP_FFS_MAP_'
 # RESULT_SCORE_INDEX = ACCURACY_INDEX
 # RUN_PREFIX = 'TOP_FFS_ACC_'
 # TEMP_RUN_PREFIX = 'TEMP_FFS_ACC_'
+
+# RESULT_SCORE_INDEX = F1_INDEX
+# RUN_PREFIX = 'TOP_FFS_F1_'
+# TEMP_RUN_PREFIX = 'TEMP_FFS_F1_'
 
 SET_NAME = 'dev+test'
 TEST_SET_NAME = 'dev+test'
@@ -253,7 +258,7 @@ def read_best_results(set_name):
     print('BEFORE SORT:', group_scores)
     sorted_group_scores = sorted(group_scores.items(), key=operator.itemgetter(1), reverse=True)
 
-    print('AFTER SORT:', sorted_group_scores)   
+    print('AFTER SORT:', sorted_group_scores)
 
     sorted_groups = []             
     for gr in sorted_group_scores:
