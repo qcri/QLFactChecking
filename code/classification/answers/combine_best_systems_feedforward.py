@@ -89,7 +89,7 @@ def main(prefix):
         best_temp_system = select_best_temp_system(i, j)
         current_best.append(best_temp_system)
         X.remove(best_temp_system)
-        index_name = RUN_PREFIX+str(i)
+        index_name = RUN_PREFIX+str(i+1)
         groups_names.append(best_temp_system)  
         groups_names_str += best_temp_system
         run_id = index_name + ' ('+groups_names_str + ')'
@@ -131,9 +131,9 @@ def main(prefix):
 
 def temp_system_prefix(i, j=-1, group=''):
     if j >=0:
-        return TEMP_RUN_PREFIX + str(i) + '_' + str(j) + '__'+group + '___'
+        return TEMP_RUN_PREFIX + str(i+1) + '_' + str(j) + '__'+group + '___'
     else:
-        return TEMP_RUN_PREFIX + str(i)
+        return TEMP_RUN_PREFIX + str(i+1)
 
 def select_best_temp_system(i, j):
     print('SELECTING BEST RUN....')
