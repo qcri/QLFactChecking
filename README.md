@@ -13,6 +13,8 @@ The set name can be changed in file *RunCV.py -> SET_NAME*.
 
 The project was built with Python 3.5. You will need Python 3 to run it.
 
+You will need to install the following Python modules: **scikit-learn**, **numpy**.
+
 In order to run the classificaiton, execute the file *RunMultiple.py* in directory *code/classification/answers*.
 
 The results will be saved in directory: *data/results*. The predictions for each examples will be saved in directory *data/predictions*.
@@ -27,4 +29,24 @@ To specify whether the results should be sorted by Accuracy or MAP, change the v
 
 
 ## Features
-  **TODO**
+
+To add new features:
+
+* Add the feature file in folder **data/features**. To allow unified reading of all feature files, the file name needs to be of the form *PREFIX1-feature_description-PREFIX2*. The prefixes can be changed in file **Features.py**.
+
+The feature files need to contain one line for each answer. The line contains the answer ID followed by the features extracted for this answer, separated with tabs. (*example: Q273_R39_C4	0	0	0	0	114	6	19*)
+
+* In **Features.py** add a new method for reading your file.
+
+* Add your features as a new set or combine it with other features in the file **FeatureSets.py**.
+
+* In file **RunMultiple.py**, add the newly configured set for execution.
+
+
+## Baselines
+
+Several baselines are being computed when the results file is being created for the first time. If you need a fresh computing of the baselines, you need to remove this file from the **results** directory.
+
+You can exclude execution of the bag-of-words and ngrams baselines by setting the value of *INCLUDE_TEXT_BASELINES* in the file *RunCV.py* to *False*.
+
+
