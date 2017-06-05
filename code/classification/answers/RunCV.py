@@ -12,6 +12,8 @@ from sklearn.grid_search import *
 from sklearn.preprocessing import *
 from sklearn.pipeline import *
 from sklearn.feature_selection import *
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from comment import Comment
 import comment_utils
 import Features
@@ -40,6 +42,8 @@ CROSS_VALIDATION = True
 # 0: leave-1-question-out
 # >0: splits size
 SPLIT_SETS_SIZE = 0
+
+INCLUDE_TEXT_BASELINES = True
 
 
 def predictions_path(run_id, set_name=SET_NAME):
@@ -143,6 +147,26 @@ def run_split_sets(run_id, splits, feat_index=''):
                 calculate_baseline_with_score_oracle(test_set, 'ranking-baseline-oracle', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
                 calculate_baseline_with_score_random(test_set, 'ranking-baseline-random', RESULTS_FILE, TEST_SET_NAME, TEST_DATA_PATH)
 
+        if INCLUDE_TEXT_BASELINES:
+            calculate_baseline_bag_of_words(set_parts, 'baseline-bag-of-words', 1, 1, False, RESULTS_FILE)
+            calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-2', 2, 2, False, RESULTS_FILE)
+            calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-3', 3, 3, False, RESULTS_FILE)
+            calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-4', 4, 4, False, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-1-2', 1, 2, False, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-1-3', 1, 3, False, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-2-3', 2, 3, False, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-1-4', 1, 4, False, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-2-4', 2, 4, False, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-bag-of-words-tfidf', 1, 1, True, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-tfidf-2', 2, 2, True, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-tfidf-3', 3, 3, True, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-tfidf-4', 4, 4, True, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-tfidf-1-2', 1, 2, True, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-tfidf-1-3', 1, 3, True, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-tfidf-2-3', 2, 3, True, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-tfidf-1-4', 1, 4, True, RESULTS_FILE)
+            # calculate_baseline_bag_of_words(set_parts, 'baseline-word-ngrams-tfidf-2-4', 2, 4, True, RESULTS_FILE)
+            
     best_params, scoring = run_experiment(full_set, full_set, run_id, feat_index, True)
 
     for i in range(0,len(set_parts)):
@@ -217,6 +241,34 @@ def calculate_baseline_with_score_oracle(data_set, baseline_name, results_file, 
     write_to_csv_file(result_line, results_file)
 
 
+def calculate_baseline_bag_of_words(set_parts, baseline_name, ngram_range_from, ngram_range_to, tfidf, results_file, set_name=SET_NAME, data_path=DATA_PATH):
+    # Go through all the cross validation splits, build model and evaluate
+    print('CALCULATING BASELINE', baseline_name)
+    full_set_flat = [comment for sublist in set_parts for comment in sublist]
+    full_set = [comment.text for sublist in set_parts for comment in sublist]
+    full_set_labels = [comment.label for sublist in set_parts for comment in sublist]
+
+    if tfidf:
+        vectorizer = TfidfVectorizer(ngram_range=(ngram_range_from, ngram_range_to))
+    else:
+        vectorizer = CountVectorizer(ngram_range=(ngram_range_from, ngram_range_to))
+    full_set_features = vectorizer.fit_transform(full_set)
+    
+    model, best_params, scoring = build_model(full_set_features, full_set_labels)
+
+    for i in range(0,len(set_parts)):
+        print('running experiments for split', i)
+        train_set = list(full_set_flat)
+        dev_set = set_parts[i]
+        for c in dev_set:
+            train_set.remove(c)
+        params, scoring = run_experiment_word_baselines(train_set, dev_set, baseline_name, ngram_range_from, ngram_range_to, tfidf, False, best_params)
+
+    # Evaluate the results from the written prediction file and save them in the results file
+    evaluate_test_sets(RESULTS_FILE, baseline_name, best_params, scoring)
+
+
+
 def ensure_required_directories_exist():
     ensure_directory_exists('../../../data/predictions')
     ensure_directory_exists('../../../data/results')
@@ -267,6 +319,71 @@ def run_experiment(train_data, dev_data, run_id, feat_index='', full_set=False, 
 
     # evaluate and save the result
     return best_params, scoring
+
+
+def run_experiment_word_baselines(train_data, dev_data, run_id, ngram_range_from=1, ngram_range_to=1, tfidf = False, full_set=False, params=None, set_name=SET_NAME):
+    # Get the numerical features from words in the comments
+    train_features = []
+    train_labels = []
+    train_corpus = []
+    for comment in train_data:
+        train_corpus.append(comment.text)
+        train_labels.append(comment.label)
+
+    # if ngram_range_from == ngram_range_to and ngram_range_to == 1:
+    #     vectorizer = CountVectorizer()
+    #     print('v1')
+    # else:
+    if tfidf:
+        vectorizer = TfidfVectorizer(ngram_range=(ngram_range_from, ngram_range_to))
+    else:
+        vectorizer = CountVectorizer(ngram_range=(ngram_range_from, ngram_range_to))
+    train_features = vectorizer.fit_transform(train_corpus)
+
+    # dev features
+    dev_features = []
+    dev_labels = []
+    dev_corpus = []
+    for comment in train_data:
+        dev_corpus.append(comment.text)
+        dev_labels.append(comment.label)
+
+    dev_features = vectorizer.transform(dev_corpus)
+
+    # Scale the features
+    """
+    NOT SCALING THE BAG-OF-WORDS FEATURES - TODO!!!
+    """
+    # min_max_scaler = MinMaxScaler()
+    # train_features = min_max_scaler.fit_transform(train_features)
+    # dev_features = min_max_scaler.transform(dev_features)
+
+    # If the full set is passed, we want to just return the best params.
+    # If a subset is passed, the passed params are used
+
+    model, best_params, scoring = build_model(train_features, train_labels, params)
+    # Predict the dev and train data        
+    dev_predicted = model.predict(dev_features)
+    if EVALUATE_WITH_SCORE:
+        dev_predicted_scores = model.predict_proba(dev_features)
+
+    print(dev_predicted)
+
+    for (i,comment) in enumerate(dev_data):
+        comment.predicted_label = dev_predicted[i]
+        if EVALUATE_WITH_SCORE:
+            add_ranking = 1/cid_to_int_extracted(comment.comment_id)*0.0000000001
+            comment.predicted_score = dev_predicted_scores[i][1]+add_ranking
+    
+        # Write the predicted labels to file
+        write_predictions_to_file(dev_data, predictions_path(run_id, set_name))
+        if EVALUATE_WITH_SCORE:
+            write_score_predictions_to_file(dev_data, score_predictions_path(run_id, set_name))
+            # comment_utils.convert_scores_to_ranking_file_and_return_ranking_map(score_predictions_path(run_id, set_name), ranking_predictions_path(run_id, set_name))
+            
+    # evaluate and save the result
+    return best_params, scoring
+
 
 def write_predictions_to_file(data, file):
     for comment in data:
