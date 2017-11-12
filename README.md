@@ -50,3 +50,12 @@ Several baselines are being computed when the results file is being created for 
 You can exclude execution of the bag-of-words and ngrams baselines by setting the value of *INCLUDE_TEXT_BASELINES* in the file *RunCV.py* to *False*.
 
 
+## Search Engines
+
+The folder **data/search engine sources** contains files with information related to extracting information from search engines. 
+
+* File **qatar-related-site-credibility.tsv** contains manually annotated list of websites. Possible labels are: reputed-source, forum-type, others. They also contain annotations whether the website is Qatar related.
+
+* File **search-engine-results.zip** is an archive with queries and result snippets from the search engine for each answer.
+
+* File **best-snippets-google-QL.tsv** contains only web data that has the highest similarity to the original QA-pair.
