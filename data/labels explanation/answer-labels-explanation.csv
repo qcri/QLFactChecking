@@ -1,0 +1,464 @@
+CID,Label,Explanation or proof
+Q319_R40_C1,NonFactual,
+Q319_R40_C3,Factual - False,https://en.wikipedia.org/wiki/Cousin_marriage
+Q319_R40_C8,Factual - True,https://en.wikipedia.org/wiki/Cousin_marriage
+Q321_R17_C2,Factual - True,https://www.moi.gov.qa/site/english/departments/traffic/violations/point2.doc
+Q321_R17_C4,Factual - False,https://www.moi.gov.qa/site/english/departments/traffic/violations/point2.doc
+Q321_R17_C5,Factual - True,https://www.moi.gov.qa/site/english/departments/traffic/violations/point2.doc
+Q326_R25_C2,Factual - Partially True,"There is salary comparison, but this number was not stated.
+
+http://www.salaryexplorer.com/salary-survey.php?loc=176&loctype=1&jobtype=1&job=39
+
+http://www.onlineqatar.com/living/salaries-doha-qatar.aspx
+
+http://www.salaryexplorer.com/salary-survey.php?loc=176&loctype=1&job=276&jobtype=3
+
+http://britishexpats.com/forum/me-job-discussions-136/average-salary-petroleum-engineers-qatar-804449/"
+Q326_R25_C3,Factual - Partially True,"There is salary comparison, but this number was not stated.
+
+http://www.salaryexplorer.com/salary-survey.php?loc=176&loctype=1&jobtype=1&job=39
+
+http://www.onlineqatar.com/living/salaries-doha-qatar.aspx
+
+http://www.salaryexplorer.com/salary-survey.php?loc=176&loctype=1&job=276&jobtype=3
+
+http://britishexpats.com/forum/me-job-discussions-136/average-salary-petroleum-engineers-qatar-804449/"
+Q326_R25_C4,Factual - Partially True,"It is presumably true, given the projection from 
+http://www.payscale.com/research/AE/Employer=Qatar_Petroleum/Salary"
+Q326_R25_C5,Factual - Partially True,"It is presumably true, given the projection from 
+http://www.payscale.com/research/AE/Employer=Qatar_Petroleum/Salary"
+Q326_R25_C7,Factual - Partially True,"It is presumably true, given the projection from 
+http://www.payscale.com/research/AE/Employer=Qatar_Petroleum/Salary"
+Q327_R78_C4,NonFactual,
+Q328_R23_C1,Factual - Partially True,"According to some reviews, there are free flights, but the rest of the response cannot be confirmed.
+
+http://www.indeed.com/cmp/Qatar-Airways/reviews"
+Q328_R23_C2,Factual - Partially True,"According to some reviews, there are free flights, but the rest of the response cannot be confirmed.
+
+http://www.indeed.com/cmp/Qatar-Airways/reviews"
+Q328_R23_C3,Factual - Partially True,"According to some reviews, there are free flights, but the rest of the response cannot be confirmed.
+
+http://www.indeed.com/cmp/Qatar-Airways/reviews"
+Q328_R23_C4,Factual - Partially True,"According to some reviews, there are free flights, but the rest of the response cannot be confirmed.
+
+http://www.indeed.com/cmp/Qatar-Airways/reviews"
+Q330_R8_C1,Factual - True,"Qtel has changed its name to Ooredoo but the service number is indeed 111:
+http://allcustomercarenumbers.net/Customer-Service-Number-Qtel-Qatar-07435
+https://www.ooredoo.qa/portal/OoredooQatar/contact-us"
+Q330_R8_C2,Factual - True,"Qtel has changed its name to Ooredoo but the service number is indeed 111:
+http://allcustomercarenumbers.net/Customer-Service-Number-Qtel-Qatar-07435
+https://www.ooredoo.qa/portal/OoredooQatar/contact-us"
+Q330_R8_C3,Factual - True,"Qtel has changed its name to Ooredoo but the service number is indeed 111:
+http://allcustomercarenumbers.net/Customer-Service-Number-Qtel-Qatar-07435
+https://www.ooredoo.qa/portal/OoredooQatar/contact-us"
+Q330_R8_C4,Factual - True,"Qtel has changed its name to Ooredoo but the service number is indeed 111:
+http://allcustomercarenumbers.net/Customer-Service-Number-Qtel-Qatar-07435
+https://www.ooredoo.qa/portal/OoredooQatar/contact-us"
+Q330_R8_C5,Factual - True,"Qtel has changed its name to Ooredoo but the service number is indeed 111:
+http://allcustomercarenumbers.net/Customer-Service-Number-Qtel-Qatar-07435
+https://www.ooredoo.qa/portal/OoredooQatar/contact-us"
+Q330_R8_C6,Factual - True,"Qtel has changed its name to Ooredoo but the service number is indeed 111:
+http://allcustomercarenumbers.net/Customer-Service-Number-Qtel-Qatar-07435
+https://www.ooredoo.qa/portal/OoredooQatar/contact-us"
+Q330_R8_C7,Factual - True,"Qtel has changed its name to Ooredoo but the service number is indeed 111:
+http://allcustomercarenumbers.net/Customer-Service-Number-Qtel-Qatar-07435
+https://www.ooredoo.qa/portal/OoredooQatar/contact-us"
+Q330_R8_C8,Factual - True,"Qtel has changed its name to Ooredoo but the service number is indeed 111:
+http://allcustomercarenumbers.net/Customer-Service-Number-Qtel-Qatar-07435
+https://www.ooredoo.qa/portal/OoredooQatar/contact-us"
+Q330_R8_C9,Factual - True,"Qtel has changed its name to Ooredoo but the service number is indeed 111:
+http://allcustomercarenumbers.net/Customer-Service-Number-Qtel-Qatar-07435
+https://www.ooredoo.qa/portal/OoredooQatar/contact-us"
+Q330_R8_C10,Factual - False,"Qtel has changed its name to Ooredoo and the service number is 111, not 911:
+http://allcustomercarenumbers.net/Customer-Service-Number-Qtel-Qatar-07435
+https://www.ooredoo.qa/portal/OoredooQatar/contact-us"
+Q332_R2_C1,Factual - True,"""Bombay silks"" is proven with https://www.facebook.com/BombaySilkCentreSalwa/ and http://www.bombaysilkcentre.com/index.html"
+Q332_R2_C3,Factual - True,"""Bombay silks"" is proven with https://www.facebook.com/BombaySilkCentreSalwa/ and http://www.bombaysilkcentre.com/index.html"
+Q332_R2_C4,Factual - Partially True,"https://www.myqbd.com/qatar-companies-profile-rev/4393/PARTHAS_INDIAN_TEXTILES_WLL
+
+
+http://www.bombaysilkcentre.com/index.html"
+Q332_R2_C5,Factual - False,"because of the ""100% silk"", which is false"
+Q332_R2_C6,Factual - Partially True,"Bombay silk center can be proved but no evidence could be found for the rest of the answer.
+http://www.bombaysilkcentre.com/index.html"
+Q332_R2_C8,Factual - Partially True,"Bombay silk center can be proved but no evidence could be found for the rest of the answer.
+http://www.bombaysilkcentre.com/index.html"
+Q332_R26_C8,NonFactual,
+Q332_R26_C10,NonFactual,
+Q334_R1_C1,Factual - Partially True,"No need for second exam, according to 7, but visit to medical commission is needed: https://www.linkedin.com/pulse/how-convert-family-visit-visa-residence-qatar-syed-nizamuddin"
+Q334_R1_C2,Factual - Partially True,"No need for second exam, according to 7, but visit to medical commission is needed: https://www.linkedin.com/pulse/how-convert-family-visit-visa-residence-qatar-syed-nizamuddin"
+Q334_R1_C3,Factual - Partially True,"No need for second exam, according to 7, but visit to medical commission is needed: https://www.linkedin.com/pulse/how-convert-family-visit-visa-residence-qatar-syed-nizamuddin"
+Q336_R24_C1,NonFactual,sarcasm
+Q336_R24_C2,NonFactual,sarcasm
+Q336_R24_C6,Factual - Partially True,http://www.onlineqatar.com/living/dress-code-doha-qatar.aspx and http://dohanews.co/modest-dress-campaign-revived-with-new-you-matter-in-qatar-slogan/
+Q336_R24_C7,Factual - Partially True,http://www.onlineqatar.com/living/dress-code-doha-qatar.aspx and http://dohanews.co/modest-dress-campaign-revived-with-new-you-matter-in-qatar-slogan/
+Q336_R24_C8,Factual - False,too general statement to be true
+Q336_R24_C10,NonFactual,
+Q338_R2_C1,Factual - Responder Unsure,
+Q338_R2_C2,Factual - True,http://nricafe.com/guide-prohibited-and-restricted-items-while-travelling-to-gcc/
+Q338_R2_C3,Factual - Responder Unsure,
+Q338_R2_C5,Factual - True,http://nricafe.com/guide-prohibited-and-restricted-items-while-travelling-to-gcc/
+Q338_R2_C6,Factual - True,http://nricafe.com/guide-prohibited-and-restricted-items-while-travelling-to-gcc/
+Q338_R30_C8,Factual - Responder Unsure,
+Q338_R42_C1,Factual - True,"I am not sure about pork. It is not mentioned here: http://www.customs.gov.qa/eng/traveller.php
+
+Pork is mentioned here: http://dohahamadairport.com/airport-guide/at-the-airport/security-customs"
+Q338_R42_C4,Factual - True,"I am not sure about pork. It is not mentioned here: http://www.customs.gov.qa/eng/traveller.php
+
+Pork is mentioned here: http://dohahamadairport.com/airport-guide/at-the-airport/security-customs"
+Q340_R9_C2,Factual - True,"A query to Google with ""job in another gcc country"" (without quotes returned this, wher eit is said that a ban in one GCC country does not extend to another one, and teh cae of moving from UAE to Qatar was discussed in particular. http://www.thenational.ae/business/personal-finance/does-uae-employment-ban-extend-to-other-gcc-countries"
+Q340_R27_C3,Factual - True,http://hivtravel.org/Default.aspx?PageId=143&CountryId=147
+Q340_R88_C3,Factual - Responder Unsure,
+Q340_R88_C4,Factual - Partially True,"Not sure if he is going to ge tin trouble, but it's better to avoid hugging in public
+
+http://matadornetwork.com/abroad/9-rules-for-expats-in-qatar/
+
+http://www.expatwoman.com/qatar/monthly_qatar_guide_Etiquette_11093.aspx"
+Q340_R88_C5,Factual - Partially True,"Not sure if he is going to ge tin trouble, but it's better to avoid hugging in public
+
+http://matadornetwork.com/abroad/9-rules-for-expats-in-qatar/
+
+http://www.expatwoman.com/qatar/monthly_qatar_guide_Etiquette_11093.aspx"
+Q340_R88_C10,Factual - Responder Unsure,
+Q341_R26_C1,Factual - True,according to http://www.walkjogrun.net/running-routes/Qatar/  and http://www.aspire.qa/Athletics.aspx
+Q341_R26_C2,Factual - True,according to http://www.walkjogrun.net/running-routes/Qatar/  and http://www.aspire.qa/Athletics.aspx
+Q341_R26_C3,Factual - True,according to http://www.walkjogrun.net/running-routes/Qatar/  and http://www.aspire.qa/Athletics.aspx
+Q341_R26_C5,NonFactual,
+Q341_R26_C6,Factual - True,http://www.dohafamily.com/Summer-2014/Dahl-al-Hammam-Park/
+Q341_R26_C7,Factual - True,"this is a runners club:
+http://www.doha-nightcrawlers.club/"
+Q341_R26_C10,Factual - True,"There are some running routes mapped on the streets here: 
+http://www.mapmyrun.com/qa/doha-ad-dawhah/"
+Q344_R1_C5,Factual - False,I could not find a way to contest a fine on this site.
+Q345_R14_C1,NonFactual,"This is an opinion answer, not a factual one."
+Q345_R14_C3,Factual - True,"According to this website, it should work:
+
+http://www.adaptelec.com/index.php?main_page=document_general_info&products_id=231
+
+according to http://www.power-plugs-sockets.com/qatar/"
+Q345_R14_C5,Factual - True,http://www.adaptelec.com/index.php?main_page=document_general_info&products_id=231
+Q347_R25_C1,Factual - False,There is an IKEA store in Doha: http://www.ikea.com/qa/en/store/qatar/
+Q347_R25_C2,Factual - False,There is an IKEA store in Doha: http://www.ikea.com/qa/en/store/qatar/
+Q347_R25_C5,Factual - False,There is an IKEA store in Doha: http://www.ikea.com/qa/en/store/qatar/
+Q347_R25_C7,Factual - False,There is an IKEA store in Doha: http://www.ikea.com/qa/en/store/qatar/
+Q348_R53_C9,Factual - True,https://www.radissonblu.com/en/hotel-doha/location/qatar-museum-aquarium
+Q351_R5_C8,NonFactual,"Yet, this is a bit low based on what I do, and based on what I know. Also, based on this: http://www.whototip.net/tipping-in-qatar"
+Q351_R5_C9,NonFactual,"This is opinion, not a factual answer."
+Q351_R27_C4,Factual - False,"Does not seem credible, according to this you can wear suit at business meetings.
+
+http://www.onlineqatar.com/living/dress-code-doha-qatar.aspx"
+Q351_R27_C6,Factual - True,http://www.onlineqatar.com/living/dress-code-doha-qatar.aspx
+Q351_R27_C7,Factual - True,http://www.onlineqatar.com/living/dress-code-doha-qatar.aspx
+Q351_R27_C8,Factual - True,http://www.onlineqatar.com/living/dress-code-doha-qatar.aspx
+Q351_R27_C9,Factual - True,http://www.onlineqatar.com/living/dress-code-doha-qatar.aspx
+Q355_R3_C1,Factual - Responder Unsure,
+Q355_R3_C3,Factual - True,http://www.theworld-aroundus.com/news/blacklisted-qatar-can-enter-gcc-countries/
+Q355_R3_C8,Factual - True,http://www.theworld-aroundus.com/news/blacklisted-qatar-can-enter-gcc-countries/
+Q355_R24_C3,Factual - Responder Unsure,
+Q355_R24_C5,Factual - True,http://www.qatarday.com/news/legal/deported-expats-will-face-gcc-wide-ban/12558
+Q356_R53_C6,NonFactual,"advice, not a factual claim. BTW, the question is NOT an opinion question."
+Q358_R40_C1,Factual - Conditionally True,This depends on the visa.
+Q358_R40_C2,Factual - Conditionally True,This depends on the visa.
+Q358_R40_C3,Factual - Conditionally True,This depends on the visa.
+Q358_R40_C4,Factual - Conditionally True,This depends on the visa.
+Q358_R40_C6,Factual - Conditionally True,This depends on the visa.
+Q358_R40_C7,Factual - Conditionally True,This depends on the visa.
+Q358_R40_C8,Factual - True,http://dohahamadairport.com/airport-guide/at-the-airport/visas-immigration
+Q358_R40_C10,Factual - Conditionally True,This depends on the visa.
+Q359_R13_C2,Factual - Responder Unsure,
+Q359_R13_C4,Factual - Responder Unsure,
+Q359_R13_C6,Factual - True,"The website exists, but the responder is unsure."
+Q359_R13_C10,Factual - True,The link exists and has supplements.
+Q361_R56_C3,NonFactual,
+Q361_R56_C10,NonFactual,
+Q362_R13_C1,Factual - True,https://brocadeblue.blogspot.qa/2013/06/doha-review-tofu-place-in-megamart-at.html
+Q362_R13_C2,Factual - True,https://brocadeblue.blogspot.qa/2013/06/doha-review-tofu-place-in-megamart-at.html
+Q362_R13_C4,Factual - True,https://brocadeblue.blogspot.qa/2013/06/doha-review-tofu-place-in-megamart-at.html
+Q363_R58_C1,Factual - False,numerous sources on the Web suggest that UAE is not top; check also https://www.gulftalent.com/
+Q363_R58_C2,Factual - True,https://www.gulftalent.com/
+Q363_R58_C3,Factual - Responder Unsure,
+Q363_R58_C5,Factual - True,https://www.gulftalent.com/
+Q363_R58_C6,Factual - False,https://www.gulftalent.com/
+Q363_R58_C8,Factual - Responder Unsure,
+Q363_R58_C9,Factual - True,https://www.gulftalent.com/
+Q365_R13_C1,Factual - Responder Unsure,
+Q365_R13_C4,Factual - Responder Unsure,
+Q372_R1_C2,Factual - False,http://www.qatarliving.com/forum/socialising/posts/delhi-sweets-opened-its-door-again also http://www.qatarliving.com/restaurants/new-delhi-restaurant-sweets
+Q372_R1_C6,Factual - True,proven with https://www.zomato.com/doha/delhi-bakery-al-doha-al-jadeeda
+Q372_R1_C7,Factual - True,proven with https://www.zomato.com/doha/delhi-bakery-al-doha-al-jadeeda
+Q373_R23_C3,Factual - Responder Unsure,
+Q375_R1_C5,Factual - True,proven with http://www.easyexpat.com/en/guides/qatar/doha/practical/babysitting.htm
+Q375_R1_C10,Factual - False,The link address doesn't work!
+Q379_R22_C2,Factual - Responder Unsure,
+Q379_R22_C3,Factual - True,"The club exists, but the rest of the response is not factual...
+
+http://www.qatartennis.org/sections/index/21/tennis-court-booking-.html"
+Q379_R22_C8,Factual - True,"The club exists, but the rest of the response is not factual...
+
+http://www.qatartennis.org/sections/index/21/tennis-court-booking-.html"
+Q379_R22_C10,NonFactual,
+Q379_R40_C1,Factual - Partially True,"not sure which days...
+
+http://www.qatarbowlingcenter.net/
+
+according to http://www.qatarbowlingfederation.com/bowling-center/"
+Q379_R40_C9,Factual - Partially True,"The clubs exist, the rest of the answer is not verifiable
+
+http://www.eljaish.com/table-tennis-2/
+
+
+http://yp.theemiratesnetwork.com/biz/Qatar/Al_Rayyan/Al_Gharafa_Sports_Club_32515.html"
+Q380_R23_C1,Factual - True,"proven with the query ""Park near Villagio mall qatar"" at Google.
+Also: https://en.wikipedia.org/wiki/Aspire_Park"
+Q380_R23_C3,Factual - True,"proven with the query ""Park near Villagio mall qatar"" at Google.
+Also: https://en.wikipedia.org/wiki/Aspire_Park"
+Q380_R23_C5,Factual - True,"proven with the query ""Park near Villagio mall qatar"" at Google.
+Also: https://en.wikipedia.org/wiki/Aspire_Park"
+Q380_R23_C7,Factual - True,"proven with the query ""Park near Villagio mall qatar"" at Google.
+Also: https://en.wikipedia.org/wiki/Aspire_Park"
+Q380_R23_C10,Factual - True,"proven with the query ""Park near Villagio mall qatar"" at Google.
+Also: https://en.wikipedia.org/wiki/Aspire_Park"
+Q380_R25_C1,Factual - True,proven with http://www.dailysabah.com/money/2015/11/25/qatar-to-impose-no-singles-allowed-family-only-days-at-shopping-malls
+Q380_R25_C5,Factual - True,proven with http://www.dailysabah.com/money/2015/11/25/qatar-to-impose-no-singles-allowed-family-only-days-at-shopping-malls
+Q382_R3_C1,Factual - Partially True,"the bank exists, cannot prove about the interest
+
+ with http://www.moneygulf.com/doha/personal-loan/qib-loans/qatar-islamic-bank-personal-loan-for-expat"
+Q382_R3_C2,Factual - Partially True,"the bank exists, cannot prove about the interest
+
+ with http://www.moneygulf.com/doha/personal-loan/qib-loans/qatar-islamic-bank-personal-loan-for-expat"
+Q382_R3_C3,Factual - Partially True,"the bank exists, cannot prove about the interest
+
+ with http://www.moneygulf.com/doha/personal-loan/qib-loans/qatar-islamic-bank-personal-loan-for-expat"
+Q382_R3_C4,Factual - Partially True,"the bank exists, cannot prove about the interest
+
+ with http://www.moneygulf.com/doha/personal-loan/qib-loans/qatar-islamic-bank-personal-loan-for-expat"
+Q382_R3_C5,Factual - Partially True,"the bank exists, cannot prove about the interest
+
+ with http://www.moneygulf.com/doha/personal-loan/qib-loans/qatar-islamic-bank-personal-loan-for-expat"
+Q382_R3_C6,Factual - Partially True,"the bank exists, cannot prove about the interest
+
+ with http://www.moneygulf.com/doha/personal-loan/qib-loans/qatar-islamic-bank-personal-loan-for-expat"
+Q382_R3_C7,Factual - Partially True,"the bank exists, cannot prove about the interest
+
+ with http://www.moneygulf.com/doha/personal-loan/qib-loans/qatar-islamic-bank-personal-loan-for-expat"
+Q382_R3_C8,Factual - Partially True,"the bank exists, cannot prove about the interest
+
+ with http://www.moneygulf.com/doha/personal-loan/qib-loans/qatar-islamic-bank-personal-loan-for-expat"
+Q382_R3_C9,Factual - Partially True,"the bank exists, cannot prove about the interest
+
+ with http://www.moneygulf.com/doha/personal-loan/qib-loans/qatar-islamic-bank-personal-loan-for-expat"
+Q382_R3_C10,Factual - Partially True,"the bank exists, cannot prove about the interest
+
+ with http://www.moneygulf.com/doha/personal-loan/qib-loans/qatar-islamic-bank-personal-loan-for-expat"
+Q383_R96_C4,Factual - True,http://www.onlineqatar.com/living/laws-regulations.aspx
+Q383_R96_C5,Factual - True,http://www.onlineqatar.com/living/laws-regulations.aspx
+Q383_R96_C8,NonFactual,opinion
+Q383_R96_C9,Factual - True,http://www.onlineqatar.com/living/laws-regulations.aspx
+Q385_R10_C1,Factual - True,"http://www.onlineqatar.com/living/salaries-doha-qatar.aspx
+
+https://mimizwords.wordpress.com/2010/04/19/if-you-are-not-qatari-then-you-will-be-more-appreciated/
+
+https://cabincrewexcellence.com/thinking-of-becoming-cabin-crew-salaries-benefits-contracts-explained/"
+Q385_R10_C2,Factual - True,"http://www.onlineqatar.com/living/salaries-doha-qatar.aspx
+
+https://mimizwords.wordpress.com/2010/04/19/if-you-are-not-qatari-then-you-will-be-more-appreciated/
+
+https://cabincrewexcellence.com/thinking-of-becoming-cabin-crew-salaries-benefits-contracts-explained/"
+Q385_R10_C3,Factual - Partially True,"http://www.onlineqatar.com/living/salaries-doha-qatar.aspx
+
+https://mimizwords.wordpress.com/2010/04/19/if-you-are-not-qatari-then-you-will-be-more-appreciated/
+
+https://cabincrewexcellence.com/thinking-of-becoming-cabin-crew-salaries-benefits-contracts-explained/"
+Q385_R10_C9,Factual - True,"http://www.onlineqatar.com/living/salaries-doha-qatar.aspx
+
+https://mimizwords.wordpress.com/2010/04/19/if-you-are-not-qatari-then-you-will-be-more-appreciated/
+
+https://cabincrewexcellence.com/thinking-of-becoming-cabin-crew-salaries-benefits-contracts-explained/"
+Q385_R31_C8,Factual - True,according to http://www.onlineqatar.com/living/salaries-doha-qatar.aspx
+Q385_R31_C10,Factual - True,according to http://www.onlineqatar.com/living/salaries-doha-qatar.aspx
+Q386_R1_C1,Factual - True,"can be proven with http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1 and  
+https://www.facebook.com/pages/Carrefour-Abu-Hamour/311748012251877 for ""abu hamour""."
+Q386_R1_C2,Factual - True,"can be proven with http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1 and  
+https://www.facebook.com/pages/Carrefour-Abu-Hamour/311748012251877 for ""abu hamour""."
+Q386_R1_C3,Factual - True,"""can be proven with http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1 
+the answer ""Lagoona"" is proven with http://www.lagoonamall.com/shopping/Malldirectory/?categories=&keyword=Carrefour%20Market"
+Q386_R1_C4,Factual - True,"can be proven with http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1 and  
+https://www.facebook.com/pages/Carrefour-Abu-Hamour/311748012251877 for ""abu hamour""."
+Q386_R1_C5,Factual - True,"can be proven with http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1 and  
+https://www.facebook.com/pages/Carrefour-Abu-Hamour/311748012251877 for ""abu hamour""."
+Q386_R1_C6,Factual - True,"can be proven with http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1 and  
+https://www.facebook.com/pages/Carrefour-Abu-Hamour/311748012251877 for ""abu hamour""."
+Q386_R1_C7,Factual - True,"can be proven with http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1 and  
+https://www.facebook.com/pages/Carrefour-Abu-Hamour/311748012251877 for ""abu hamour""."
+Q386_R1_C8,Factual - True,"can be proven with http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1 and  
+https://www.facebook.com/pages/Carrefour-Abu-Hamour/311748012251877 for ""abu hamour""."
+Q386_R1_C9,Factual - True,"can be proven with http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1 and  
+https://www.facebook.com/pages/Carrefour-Abu-Hamour/311748012251877 for ""abu hamour""."
+Q386_R1_C10,Factual - True,"can be proven with http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1 and  
+https://www.facebook.com/pages/Carrefour-Abu-Hamour/311748012251877 for ""abu hamour""."
+Q386_R19_C1,Factual - Partially True,"There are a few more...
+http://www.carrefourqatar.com/NewStoreLocator.aspx?language=en&country=qa&StoreType=1"
+Q273_R39_C1,Factual - True,https://wwwnc.cdc.gov/travel/destinations/traveler/none/qatar
+Q273_R39_C2,Factual - True,https://wwwnc.cdc.gov/travel/destinations/traveler/none/qatar
+Q273_R39_C4,Factual - True,https://wwwnc.cdc.gov/travel/destinations/traveler/none/qatar
+Q273_R39_C8,Factual - True,https://wwwnc.cdc.gov/travel/destinations/traveler/none/qatar
+Q273_R39_C10,Factual - True,https://wwwnc.cdc.gov/travel/destinations/traveler/none/qatar
+Q273_R76_C1,Factual - Responder Unsure,
+Q273_R76_C2,Factual - True,http://canvethospital.com/pet-relocation/banned-dog-breed-list-qatar-2015/
+Q273_R76_C10,Factual - False,http://canvethospital.com/pet-relocation/banned-dog-breed-list-qatar-2015/
+Q274_R68_C3,Factual - False,https://en.wikipedia.org/wiki/Doha#Climate
+Q274_R68_C6,Factual - Partially True,https://weatherspark.com/history/32878/2006/Doha-Ad-Dawhah-Qatar
+Q274_R68_C10,Factual - True,http://www.climatestotravel.com/climate/qatar
+Q277_R4_C1,Factual - True,https://dohanews.co/qatar-buckling-up-your-kids-isnt-the-law-should-it/
+Q277_R4_C2,Factual - True,https://dohanews.co/qatar-buckling-up-your-kids-isnt-the-law-should-it/
+Q277_R17_C1,NonFactual,
+Q277_R17_C2,NonFactual,
+Q277_R19_C1,Factual - True,according to the rule 45 at the following link: https://www.moi.gov.qa/site/english/departments/traffic/violations/point2.doc
+Q277_R19_C7,Factual - True,"The first sentence is True, the rest is Bad Answer
+
+http://www.qatarday.com/news/local/car-seat-law-for-kids-to-be-implemented/42099
+
+https://dohanews.co/qatar-buckling-up-your-kids-isnt-the-law-should-it/"
+Q277_R19_C8,Factual - True,"The last sentence is True, the rest is Bad Answer
+
+http://www.qatarday.com/news/local/car-seat-law-for-kids-to-be-implemented/42099
+
+https://dohanews.co/qatar-buckling-up-your-kids-isnt-the-law-should-it/"
+Q278_R41_C9,Factual - True,"http://www.alghariyaresorts.com/ , and there's spelling error."
+Q278_R41_C10,Factual - True,"http://www.alghariyaresorts.com/ , and not sure about the direction."
+Q280_R19_C4,Factual - True,"https://www.facebook.com/AquaArt.com.qa/
+http://www.aquaart.com.qa/aquaart-retail/"
+Q280_R19_C8,Factual - True,found the phone No.: http://callingqatar.com/Gold-Fish
+Q280_R19_C9,Factual - Responder Unsure,
+Q280_R19_C10,Factual - Responder Unsure,
+Q280_R41_C1,Factual - True,https://en.wikipedia.org/wiki/Hemoglobin
+Q280_R41_C2,Factual - True,https://www.ncbi.nlm.nih.gov/pubmed/17693829
+Q280_R41_C3,Factual - True,http://www.healthline.com/health/iron-deficiency-anemia#Diagnosis5
+Q280_R41_C6,Factual - True,https://en.wikipedia.org/wiki/Hemoglobin
+Q280_R41_C7,Factual - True,"https://en.wikipedia.org/wiki/Hemoglobin
+
+http://www.hersfoundation.com/docs/Heavy_bleeding.html"
+Q280_R41_C8,Factual - True,"https://en.wikipedia.org/wiki/Hemoglobin and for ""smoking"": http://www.mayoclinic.org/symptoms/high-hemoglobin-count/basics/causes/sym-20050862"
+Q280_R41_C9,Factual - True,http://www.webster-dictionary.org/definition/Hemoglobin
+Q280_R45_C1,Factual - Responder Unsure,
+Q280_R45_C4,Factual - True,"There is a photo of the entioned bins in the park.
+https://yadiin.blogspot.bg/2009/03/earth-day-is-coming.html"
+Q280_R45_C5,Factual - True,"part ""Doha Family Tips"" at: http://www.dohafamily.com/Summer-2014/Dahl-al-Hammam-Park/"
+Q280_R45_C10,Factual - True,http://www.qf.org.qa/content/qf-telegraph/issue-122/developing-a-strategy-for-zero-waste
+Q284_R29_C1,Factual - True,https://en.wikipedia.org/wiki/Qatar_National_Day
+Q284_R29_C2,Factual - True,https://en.wikipedia.org/wiki/Qatar_National_Day
+Q284_R29_C3,Factual - True,https://en.wikipedia.org/wiki/Qatar_National_Day
+Q284_R29_C4,Factual - True,https://en.wikipedia.org/wiki/Qatar_National_Day
+Q284_R29_C9,Factual - True,https://en.wikipedia.org/wiki/Qatar_National_Day
+Q285_R20_C2,Factual - True,"https://www.google.bg/maps/dir/Lulu+hypermarket+Al+Gharrafa,+Doha,+Qatar/U.S+Embassy,+Doha,+Qatar/@25.307436,51.4725209,14.7z/data=!4m13!4m12!1m5!1m1!1s0x3e45dc68df331bb9:0x56ba2535230aea26!2m2!1d51.4598687!2d25.3378548!1m5!1m1!1s0x3e45dba041108aa1:0xd850302ecc92ff09!2m2!1d51.471328!2d25.3036036"
+Q285_R20_C3,Factual - True,the link is to the embassy
+Q285_R20_C5,Factual - Responder Unsure,
+Q285_R20_C6,Factual - Partially True,the directions are right; 1000 is wrong
+Q286_R21_C1,Factual - Conditionally True,"It says that there are some conditions for the family visa - income etc.
+
+http://www.onlineqatar.com/info/dependent-family-visa.aspx
+
+https://dohanews.co/apply-family-visa-qatar/"
+Q286_R21_C3,Factual - Conditionally True,"It says that there are some conditions for the family visa - income etc.
+
+http://www.onlineqatar.com/info/dependent-family-visa.aspx
+
+https://dohanews.co/apply-family-visa-qatar/"
+Q286_R21_C5,Factual - Conditionally True,"fro thesecond link, it seems that this is true
+
+http://iexploreqatar.info/qatar-noc/
+
+http://www.mondaq.com/x/177666/Labour+Relations/Qatar+A+Right+Of+Entry+A+Right+To+Work+A+Right+To+Reside+A+Right+Of+Exit"
+Q286_R21_C7,Factual - Conditionally True,it's true after two-year ban.
+Q289_R35_C1,Factual - Partially True,"the place seems to exist and plays rock. How many people it allows cannot be proved
+
+https://www.zomato.com/doha/qube-radisson-blu-hote-al-muntazah
+
+http://www.eventsdoha.com/seasons-of-rock-qube/"
+Q291_R34_C1,Factual - True,"http://www.dohamums.com/guides/details/tots-corner-nursery
+
+https://www.fabert.com/etablissement-prive/29379/LYCEE-FRAN%C3%87AIS.html"
+Q291_R34_C3,Factual - True,https://www.perlesdavenirqatar.com/nos-ev%C3%A9nements/nursery-eng/
+Q291_R34_C4,Factual - True,https://www.perlesdavenirqatar.com/nos-ev%C3%A9nements/nursery-eng/
+Q291_R34_C5,Factual - True,https://www.perlesdavenirqatar.com/nos-ev%C3%A9nements/nursery-eng/
+Q300_R18_C2,Factual - True,"http://portal.www.gov.qa/wps/portal/topics/Visas,+Passports,+Official+Documents/medicalcommissionprocedures
+
+https://dohanews.co/qatar-medical-commission-no-residency-for-newcomers-with-kidney-disease/
+
+Here it is stated that the medical test is compulsory for eeryone
+
+https://www.angloinfo.com/how-to/qatar/moving/residency/work-residence-permit"
+Q300_R18_C5,Factual - False,contradiction in the answer
+Q300_R18_C6,Factual - True,"http://portal.www.gov.qa/wps/portal/topics/Visas,+Passports,+Official+Documents/medicalcommissionprocedures"
+Q300_R18_C8,Factual - True,"http://portal.www.gov.qa/wps/portal/topics/Visas,+Passports,+Official+Documents/medicalcommissionprocedures"
+Q302_R74_C1,Factual - Responder Unsure,
+Q302_R74_C2,Factual - Responder Unsure,
+Q302_R74_C3,Factual - Conditionally True,"(can't drive for more than a week): http://portal.www.gov.qa/wps/portal/topics/Visas,+Passports,+Official+Documents/drivinglicense and https://www.angloinfo.com/how-to/qatar/transport/driving-licences"
+Q302_R74_C4,Factual - True,"(can't drive for more than a week): http://portal.www.gov.qa/wps/portal/topics/Visas,+Passports,+Official+Documents/drivinglicense and https://www.angloinfo.com/how-to/qatar/transport/driving-licences"
+Q302_R74_C5,Factual - Partially True,"http://portal.www.gov.qa/wps/portal/topics/Visas,+Passports,+Official+Documents/drivinglicense
+You can drive 1 week with driving license from any country"
+Q302_R74_C7,Factual - Conditionally True,"http://portal.www.gov.qa/wps/portal/topics/Visas,+Passports,+Official+Documents/drivinglicense"
+Q302_R79_C1,Factual - False,http://www.justhere.qa/2014/12/getting-behind-wheel-need-know-renting-car-qatar/
+Q302_R79_C2,Factual - False,http://www.justhere.qa/2014/12/getting-behind-wheel-need-know-renting-car-qatar/
+Q302_R79_C4,Factual - False,http://www.justhere.qa/2014/12/getting-behind-wheel-need-know-renting-car-qatar/
+Q302_R79_C5,Factual - True,"https://www.angloinfo.com/how-to/qatar/transport/driving-licences
+
+""If arriving in Qatar on a visitor’s visa it is possible to use a national licence from any country to drive a car for seven days, provided it is a rental vehicle. A driver who holds an International Driving Permit (IDP) may drive a rental vehicle for up to six months – or until the visa status changes from visitor to resident""
+
+http://lifeinqatar.com/Pages/en/article/living/getting-around.html"
+Q302_R79_C6,Factual - True,"http://portal.www.gov.qa/wps/portal/topics/Visas,+Passports,+Official+Documents/drivinglicense"
+Q302_R79_C8,NonFactual,
+Q303_R7_C2,Factual - True,"http://www.qatarvet.name.qa/team.html
+
+the mobile is also on the sme clinic: 
+
+http://www.qatarvet.name.qa/contact.html
+
+and the other phone nnumber, too:
+
+http://www.qatarvet.name.qa/forms/grooming_consent.pdf"
+Q303_R7_C4,Factual - Partially True,"the website is with .net, not .com, but the place exists:
+
+http://www.ppkdoha.net/"
+Q303_R7_C5,Factual - True,http://www.petsofqatar.com/services/kennels-catteries/
+Q303_R23_C1,Factual - True,"http://www.qaws.org/adoption/dogs.php
+
+
+https://www.facebook.com/qaws.org/photos/?tab=album&album_id=139089069462372"
+Q306_R20_C1,Factual - False,"(first part of the answer is correct and the rest isn't correct): http://www.qatarliving.com/forum/qatar-living-lounge/posts/how-obtain-nurse-license-here-qatar , and https://www.prometric.com/en-us/clients/schq/documents/schq.pdf and https://www.prometric.com/en-us/clients/schq/Pages/landing.aspx"
+Q306_R20_C4,Factual - True,http://www.qatarliving.com/forum/qatar-living-lounge/posts/how-obtain-nurse-license-here-qatar
+Q306_R20_C6,Factual - True,"http://www.qatarliving.com/forum/qatar-living-lounge/posts/how-obtain-nurse-license-here-qatar , and https://www.prometric.com/en-us/clients/schq/documents/schq.pdf 
+and https://www.prometric.com/en-us/clients/schq/Pages/landing.aspx"
+Q306_R20_C8,Factual - True,"http://www.qatarliving.com/forum/qatar-living-lounge/posts/how-obtain-nurse-license-here-qatar , and https://www.prometric.com/en-us/clients/schq/documents/schq.pdf 
+and https://www.prometric.com/en-us/clients/schq/Pages/landing.aspx"
+Q308_R32_C2,Factual - True,"designers:
+
+https://www.facebook.com/ruksanascollection/
+
+https://www.facebook.com/Pakistani-and-Indian-Designer-Suits-wholesale-in-Qatar-1554227314853673/
+
+the part for selling indian textile:
+
+http://fathomaway.com/postcards/culture/souq-waqif-doha-qatar/"
+Q309_R9_C1,Factual - Responder Unsure,"(what he says is false!)
+according to this site, it depends on the income, not on the gender:
+
+http://www.onlineqatar.com/info/dependent-family-visa.aspx
+
+http://gulfnews.com/news/gulf/qatar/women-expatriates-in-qatar-can-now-sponsor-their-husbands-and-children-1.609013"
+Q309_R9_C2,Factual - Conditionally True,http://gulfnews.com/news/gulf/qatar/women-expatriates-in-qatar-can-now-sponsor-their-husbands-and-children-1.609013
+Q309_R9_C3,Factual - Responder Unsure,
+Q309_R9_C4,Factual - Conditionally True,"according to this site, it depends on the income, not on the gender:
+
+http://www.onlineqatar.com/info/dependent-family-visa.aspx
+
+http://gulfnews.com/news/gulf/qatar/women-expatriates-in-qatar-can-now-sponsor-their-husbands-and-children-1.609013"
+Q309_R9_C5,Factual - Conditionally True,"according to this site, it depends on the income, not on the gender:
+
+http://www.onlineqatar.com/info/dependent-family-visa.aspx
+
+http://gulfnews.com/news/gulf/qatar/women-expatriates-in-qatar-can-now-sponsor-their-husbands-and-children-1.609013"
+Q309_R9_C9,Factual - True,http://gulfnews.com/news/gulf/qatar/women-expatriates-in-qatar-can-now-sponsor-their-husbands-and-children-1.609013
+Q309_R29_C1,Factual - True,http://www.onlineqatar.com/living/driving-license-in-qatar.aspx
+Q312_R42_C2,Factual - Responder Unsure,
+Q315_R36_C10,Factual - Responder Unsure,

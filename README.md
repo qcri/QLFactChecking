@@ -59,3 +59,9 @@ The folder **data/search engine sources** contains files with information relate
 * File **search-engine-results.zip** is an archive with queries and result snippets from the search engine for each answer.
 
 * File **best-snippets-google-QL.tsv** contains only web data that has the highest similarity to the original QA-pair.
+
+## Evidence for Factuality
+
+The file **data/label explnation/answer-labels-explanation.csv** contains the answer labels and explanation or proof (with an URL) for the chosen label. 
+Some answers might lack explanation, these are mostly the cases where the label is obvious. Such labels are "Responder Unsure" and "NonFactual".
+
