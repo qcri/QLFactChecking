@@ -65,3 +65,21 @@ The folder **data/search engine sources** contains files with information relate
 The file **data/label explnation/answer-labels-explanation.csv** contains the answer labels and explanation or proof (with an URL) for the chosen label. 
 Some answers might lack explanation, these are mostly the cases where the label is obvious. Such labels are "Responder Unsure" and "NonFactual".
 
+
+# Citation
+
+Please use the following citation in your publications whenever using this resource:
+
+@InProceedings{AAAI2018:factchecking,
+  author    = {Tsvetomila Mihaylova and Preslav Nakov and Llu\'{i}s M\`{a}rquez and Alberto Barr\'on-Cede{\~n}o and Mitra Mohtarami and Georgi Karadjov and James Glass},
+  title     = {Fact Checking in Community Forums},
+  booktitle = {Proceedings of the Thirty-Second AAAI Conference on Artificial Intelligence},
+  series    = {AAAI~'18},
+  year      = {2018},
+  address   = {New Orleans, Lousiana, USA},
+  pages     = {879--886},
+  month     = {February},
+}
+
+[The paper published in AAAI-2018](https://arxiv.org/abs/1803.03178)
+
