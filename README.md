@@ -70,6 +70,7 @@ Some answers might lack explanation, these are mostly the cases where the label 
 
 Please use the following citation in your publications whenever using this resource:
 
+```
 @InProceedings{AAAI2018:factchecking,
   author    = {Tsvetomila Mihaylova and Preslav Nakov and Llu\'{i}s M\`{a}rquez and Alberto Barr\'on-Cede{\~n}o and Mitra Mohtarami and Georgi Karadjov and James Glass},
   title     = {Fact Checking in Community Forums},
@@ -80,6 +81,7 @@ Please use the following citation in your publications whenever using this resou
   pages     = {879--886},
   month     = {February},
 }
+```
 
 [The paper published in AAAI-2018](https://arxiv.org/abs/1803.03178)
 
