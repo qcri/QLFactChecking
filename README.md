@@ -30,6 +30,15 @@ To specify whether the results should be sorted by Accuracy or MAP, change the v
 
 ## Features
 
+### Feature Extraction
+
+The directory *code/features* contains code for feature extraction.
+
+The code for external support features can be found here: https://github.com/gkaradzhov/FactcheckingRANLP
+
+
+### Adding New Features
+
 To add new features:
 
 * Add the feature file in folder **data/features**. To allow unified reading of all feature files, the file name needs to be of the form *PREFIX1-feature_description-PREFIX2*. The prefixes can be changed in file **Features.py**.
